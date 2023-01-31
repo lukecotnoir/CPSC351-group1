@@ -9,9 +9,8 @@
 </head>
 <body>
 <div id="header">
-    <h1>CNU Student Alumni Connection</h1>
     <div class="global_nav">
-        <a href="index.php">Home</a>
+        <title href="index.php">CNU Connect</title>
 	    <a href="#">Search</a>
 	    <a href="#">Event Board</a>
         <a href="#">Communities</a>
