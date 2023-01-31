@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Site</title>
+    <title>Group 1 Site</title>
+    <link rel="stylesheet" href="public_html/css/header.css">
 </head>
 <body>
 <div id="header">
-    <h1>Group 1 Test Site</h1>
-    <ul class="global nav">
-        <li><a href="#">Home</a></li>
-	    <li><a href="#">Articles</a></li>
-	    <li><a href="#">Portfolio</a></li>
-    </ul>
+    <h1>CNU Student Alumni Connection</h1>
+    <div class="global_nav">
+        <a href="index.php">Home</a>
+	    <a href="#">Search</a>
+	    <a href="#">Event Board</a>
+        <a href="#">Communities</a>
+        <a href="#">Messages</a>
+        <a href="#">Login</a>
+    </div>
 </div> 
   
 </body>

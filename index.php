@@ -1,7 +1,7 @@
 <?php
 
-    require_once(realpath("resources/config.php"));
-    require_once(realpath(TEMPLATES_PATH . "/header.php"));
+    include_once(realpath("resources/config.php"));
+    include_once(realpath(TEMPLATES_PATH . "/header.php"));
 ?>
 
 <div id="container">
@@ -10,11 +10,8 @@
         <h2>this is the test website</h2>
         <p>I dont know what else to put here</p>
     </div>
-    <?php
-        require_once(realpath(TEMPLATES_PATH . "/sidePanel.php"));
-    ?>
 </div>
 
 <?php
-    require_once(realpath(TEMPLATES_PATH . "/footer.php"));
+    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
