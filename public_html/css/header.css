@@ -1,33 +1,9 @@
-.global_nav {
-    background-color: #add1f7;
-    overflow: hidden;   
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
     width: 100%;
 }
-
-.global_nav a {
-    float: left;
-    color: #051938;
-    padding: 12px;
+.navbar a {
+    font-size: 18px;
     text-decoration: none;
-    font-size: 17px;
-    width: 14%;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    border: whitesmoke;
-}
-
-.global_nav a:hover {
-    background-color: #cae1fa;
-    color: black;
-}
-@media screen and (max-width: 500px) {
-    .global_nav {
-        width: 33%;
-    }
-    .global_nav a {
-      float: none;
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
 }
