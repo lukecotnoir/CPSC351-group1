@@ -1,4 +1,3 @@
-
 <?php
     include_once(realpath("resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));

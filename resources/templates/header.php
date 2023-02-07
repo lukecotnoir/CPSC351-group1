@@ -11,12 +11,13 @@
     <div class="navbar">
         <div class="logo"><a href="index.php">CNU Connect</a></div>
         <div class="menu">
-	        <a href="#">Search</a>
-	        <a href="#">Event Board</a>
+            <a href="#">Search</a>
+            <a href="#">Event Board</a>
             <a href="#">Communities</a>
             <a href="#">Messages</a>
             <a href="#">Login</a>
         </div>
     </div>
+
 </body>
 </html> 

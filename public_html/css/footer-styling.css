@@ -1,19 +1,21 @@
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    background-color: #2777b9;
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 5px;
+foot {
+    bottom: 0;
+    margin-top: auto;
+    text-align: center;
+    font-size: large;
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
 }
-.footer a {
-    color: white;
+foot a {
+    text-align: center;
     text-decoration: none;
-}
-.footer a:hover {
-    color: whitesmoke;
+    color: black;
     text-decoration: underline;
+    padding: 2px 5px;
+}
+foot a:hover {
+    text-decoration: none;
+    background-color: #e6f0f9;
+    border-radius: 5px;
+    color: black;
+    transition: 0.2s ease;
 }
