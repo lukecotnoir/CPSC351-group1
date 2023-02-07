@@ -1,9 +1,0 @@
-.navbar {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-.navbar a {
-    font-size: 18px;
-    text-decoration: none;
-}
