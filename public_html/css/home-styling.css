@@ -2,7 +2,7 @@
     background-color: #2777b9;
     margin-top: 15px;
     border-radius: 5px;
-    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
 }
 .content {
     display: flex;
@@ -11,6 +11,9 @@
     font-size: 20px;
     color: white;
     padding: 5px 5px;
+}
+.content p {
+    padding: 2px;
 }
 .greet {
     text-align: center;

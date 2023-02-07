@@ -1,7 +1,8 @@
+<link href="public_html/css/footer-styling.css" rel="stylesheet">
 <div id="footer">
-    <ul class="footer items">
-        <li>Contact Us</li>
-        <li>Report a problem</li>
-        <li>idk what else</li>
-    </ul>
+    <div class="footer items">
+        <a href="#">Contact Us</a>
+        <a href="#">Report a problem</a>
+        <a href="#">Terms and Conditions</a>
+    </div>
 </div>
