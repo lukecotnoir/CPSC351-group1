@@ -1,5 +1,5 @@
 <html><body>
-<form action="CreatingReports.php" method="post">
+<form action="Reports_saved.php" method="post">
     Creating a report</p>*: required</p>
     What are you reporting*?:
     <select name = "dropdown">
