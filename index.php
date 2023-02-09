@@ -7,7 +7,7 @@
     <div class="content">
         <p class="greet">Welcome!<br>PCSE Student-Alumni Connection System</p>
         <p>This system provides a platform for current PCSE students and alumni to connect.</p>
-        <p>To get started, click <a href="#">here</a> to sign in or create a new account.</p>
+        <p>To get started, click <a href="pages/Login.php">here</a> to sign in or create a new account.</p>
     </div>
 </div>
 <?php
