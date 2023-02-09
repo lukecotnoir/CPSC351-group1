@@ -13,9 +13,12 @@ foot a {
     padding: 2px 5px;
 }
 foot a:hover {
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #2777b9;
+    border-radius: 5px;
     text-decoration: none;
     background-color: #e6f0f9;
-    border-radius: 5px;
     color: black;
     transition: 0.2s ease;
 }
