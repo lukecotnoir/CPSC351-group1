@@ -63,7 +63,7 @@ if ($choice =="Account"&& isset($searched) )
 }
 else
 {
-    echo "Press submit to search";
+    echo "<br>Press submit to search";
 }
 
 if ($choice == "Community")
@@ -95,7 +95,7 @@ if ($choice == "Community")
 }
 else
 {
-    echo "Press submit to search";
+    echo "<br>Press submit to search";
 }
 
 ?>
