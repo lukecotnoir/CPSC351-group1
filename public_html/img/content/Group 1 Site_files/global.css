@@ -1,0 +1,26 @@
+:root {
+    --text-primary: #e9e9e9;
+    --text-secondary: #000000;
+    --bg-dark: #222325;
+    --bg-blue-primary: #1a5483;
+    --bg-blue-secondary: #20649c;
+    --global-font: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+}
+select {
+    font-family: var(--global-font);
+    text-align: center;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    border-radius: 2px;
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+}
+.button {
+    font-family: var(--global-font);
+    text-align: center;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    border-radius: 2px;
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+}

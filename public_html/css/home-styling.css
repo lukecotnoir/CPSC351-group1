@@ -1,14 +1,11 @@
-/* body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-} */
+body {
+    background-color: var(--bg-dark);
+}
 .home {
     border-style: solid;
-    background-color: white;
+    background-color: var(--bg-dark);
     border-width: 2px;
-    border-color: #2777b9;
+    border-color: var(--bg-blue-primary);
     border-radius: 5px;
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
     max-width: fit-content;
@@ -21,7 +18,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 20px;
-    color: black;
+    color: var(--text-primary);
     padding: 5px 5px;
 }
 .content p {
@@ -29,22 +26,22 @@
 }
 .greet {
     text-align: center;
-    color: black;
+    color: var(--text-primary);
     font-size: 32px;
 }
 .content a {
     padding: 2px;
     text-decoration: underline;
-    color: black;
+    color: var(--text-primary);
 }
 
 .content a:hover {
     border-style: solid;
     border-width: 1.5px;
-    border-color: #2777b9;
+    border-color: var(--bg-blue-primary);
     border-radius: 5px;
     text-decoration: none;
-    background-color: #e6f0f9;
+    background-color: var(--text-primary);
     color: black;
-    transition: 0.2s ease;
+    transition: 0.1s ease;
 }

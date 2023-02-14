@@ -1,0 +1,33 @@
+body {
+    background-color: var(--bg-dark);
+}
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-dark);
+    border-style: solid;
+    background-color: var(--bg-dark);
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+    border-radius: 5px;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    max-width: fit-content;
+    margin: auto;
+    margin-top: 15px;
+    padding: 15px 15px;
+}
+.type-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-primary);
+}
+.search-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
