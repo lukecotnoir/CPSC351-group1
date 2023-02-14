@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report a problem</title>
-</head>
+<?php
+    include_once(realpath("resources/config.php"));
+    include_once(realpath(TEMPLATES_PATH . "/header.php"));
+?>
 <body>
 <form action="Reports_system.php" method="post">
     Creating a report</p>*: required</p>
@@ -24,6 +20,7 @@ Reason for report:<input type = "text" name = "reason"></p>
 </form><body></html>
 
 <?php
+include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 if(isset($_POST['dropdown'],$_POST['reporterID']))
 {
     $reporttype = $_POST['dropdown'];
