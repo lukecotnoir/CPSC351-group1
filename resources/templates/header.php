@@ -12,7 +12,7 @@
 
 <body>
     <div class="navbar">
-        <div class="logo"><a href="index.php">CNU Connect</a></div>
+        <div class="logo"><a href="index.php"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Christopher_Newport_University_%28logo%29.svg/2560px-Christopher_Newport_University_%28logo%29.svg.png" alt="CNU Logo"></a></div>
         <div class="menu">
             <a href="Search_saved.php">Search</a>
             <a href="#">Event Board</a>

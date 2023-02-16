@@ -21,10 +21,11 @@
 }
 .logo a{
     flex-grow: 2;
-    font-size: 32px;
-    text-decoration: none;
-    color: var(--text-primary);
-    padding: 5px 14px;
+}
+.logo img {
+    height: 50px;
+    width: 165px;
+    filter: invert(100%) sepia(96%) saturate(0%) hue-rotate(96deg) brightness(104%) contrast(104%);
 }
 
 @media (max-width: 810px) {
