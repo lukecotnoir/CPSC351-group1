@@ -1,6 +1,12 @@
 body {
     background-color: var(--bg-dark);
 }
+.img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 .home {
     border-style: solid;
     background-color: var(--bg-dark);
@@ -44,4 +50,17 @@ body {
     background-color: var(--text-primary);
     color: black;
     transition: 0.1s ease;
+}
+.logo-wrap{
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-bg{
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 25%;
+    height: auto;
 }
