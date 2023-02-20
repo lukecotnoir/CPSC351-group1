@@ -1,12 +1,7 @@
 body {
     background-color: var(--bg-dark);
 }
-.search-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bg-dark);
+form {
     border-style: solid;
     background-color: var(--bg-dark);
     border-width: 2px;
@@ -16,18 +11,11 @@ body {
     max-width: fit-content;
     margin: auto;
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     padding: 15px 15px;
-}
-.type-search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    font-size: 18px;
     color: var(--text-primary);
-}
-.search-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
 }

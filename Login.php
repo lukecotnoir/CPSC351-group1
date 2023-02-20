@@ -2,14 +2,24 @@
 include_once(realpath("resources/config.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
 ?>
-<form action="file.php" method="post">
-    Enter Log In Information <br>
-    Username: 
-    <div class=text-box><input type="text" name="uname"></div>
-    <br> Password: 
-    <div class=text-box><input type="text" name="pword"></div>
-    <div class=button><input type="submit" name="submit"></div>
-</form>
+<link href=public_html/css/login-styling.css rel="stylesheet">
+<div class=login-form>
+    <form action="file.php" method="post">
+        <p>Enter your login information here:</p>
+        <div class="username">
+            <p>Username:&nbsp</p> 
+            <div class=text-box><input type="text" name="uname"></div>
+        </div>
+        <div class="password">
+            <p>Password:&nbsp</p>
+            <div class=text-box><input type="text" name="pword"></div>
+        </div>
+        <div class=button><input type="submit" name="submit"></div>
+        <div class="sign-up">
+            <p>Don't have an account: <a href=Login.php>Sign up!</a></p>
+        </div>
+    </form>
+</div>
 <?php
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
