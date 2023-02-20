@@ -10,7 +10,6 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
         <p>To get started, click <a href="Login.php">here</a> to sign in or create a new account.</p>
     </div>
 </div>
-</body>
 <?php
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
