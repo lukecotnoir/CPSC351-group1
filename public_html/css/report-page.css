@@ -1,12 +1,7 @@
 body {
     background-color: var(--bg-dark);
 }
-.search-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bg-dark);
+form {
     border-style: solid;
     background-color: var(--bg-dark);
     border-width: 2px;
@@ -17,17 +12,22 @@ body {
     margin: auto;
     margin-top: 15px;
     padding: 15px 15px;
+    font-size: 18px;
+    color: var(--text-primary);
 }
-.type-search {
+.report-form, .details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.line {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: var(--text-primary);
+    width: 100%;
 }
-.search-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+.title {
+    font-size: 24px;
 }
