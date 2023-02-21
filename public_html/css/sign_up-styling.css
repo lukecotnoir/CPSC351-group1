@@ -21,12 +21,21 @@ body {
     font-size: 18px;
     color: var(--text-primary);
 }
-.line {
+.line, .two-items {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 75%;
+}
+.line label {
+    font-size: 14px;
+}
+.two-items {
+    font-size: 14px;
+}
+.two-items input {
+    width: 50px;
 }
 .sign-up{
     color: var(--text-gray);

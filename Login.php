@@ -32,9 +32,6 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
     </form>
 </div>
 <?php
-include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-?>
-<?php
 if(isset($_POST['uname'], $_POST['pword']))
 {
   $user = $_POST['uname'];
@@ -70,7 +67,6 @@ if(isset($_POST['uname'], $_POST['pword']))
       }
 
     $conn->close();
-
-
 }
+include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
