@@ -4,19 +4,30 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
 ?>
 <link href=public_html/css/login-styling.css rel="stylesheet">
 <div class=login-form>
-    <form action="file.php" method="post">
-        <p>Enter your login information here:</p>
+    <form action="Login.php" method="post">
+        <div class="title"><p>Enter your login information here:</p></div>
         <div class="username">
-            <p>Username:&nbsp</p> 
+            <p>Email:&nbsp</p> 
             <div class=text-box><input type="text" name="uname"></div>
         </div>
         <div class="password">
             <p>Password:&nbsp</p>
-            <div class=text-box><input type="text" name="pword"></div>
+            <div class=text-box><input type="password" name="pword" id="password"></div>
         </div>
+        <div class="show-password"><input type="checkbox" onclick="myFunction()"><p style="font-size:10px">Show Password</p></div>
+        <script>
+          function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+              x.type = "text";
+            } else {
+              x.type = "password";
+            }
+          }
+        </script>
         <div class=button><input type="submit" name="submit"></div>
         <div class="sign-up">
-            <p>Don't have an account: <a href=Login.php>Sign up!</a></p>
+            <p>Don't have an account: <a href=Sign_up.php>Sign up!</a></p>
         </div>
     </form>
 </div>

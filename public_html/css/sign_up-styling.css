@@ -21,15 +21,12 @@ body {
     font-size: 18px;
     color: var(--text-primary);
 }
-.username, .password, .show-password {
+.line {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 75%;
-}
-.show-password {
-    width: 30%;
 }
 .sign-up{
     color: var(--text-gray);

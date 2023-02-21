@@ -6,7 +6,7 @@
 <body>
     <form action="Reports_system.php" method="post">
         <div class="report-form">
-            <p>Creating a report</p>
+            <div class="title"><p>Report A Problem</p></div>
             <p>*: required</p>
             <div class="type">
                 What are you reporting*?:
@@ -19,7 +19,7 @@
             </div>
             <div class="details">
                 <div class="line">
-                    <p>If other, please provide extra detail:</p>
+                    <p>If other, explain:&nbsp</p>
                     <div class="text-box"><input type ='text', name='reportdescribe'></div>
                 </div>
                 <div class="line">
@@ -36,7 +36,6 @@
     </form>
 
 <?php
-include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 if(isset($_POST['dropdown'],$_POST['reporterID']))
 {
     $reporttype = $_POST['dropdown'];
@@ -54,8 +53,7 @@ if(isset($_POST['dropdown'],$_POST['reporterID']))
 
 echo "Report has been sent to Admin.";
 
-
 #This is where we will add the report to the table in SQL
-
 }
+include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
