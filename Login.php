@@ -14,7 +14,7 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
             <p>Password:&nbsp</p>
             <div class=text-box><input type="password" name="pword" id="password"></div>
         </div>
-        <div class="show-password"><input type="checkbox" onclick="myFunction()"><p style="font-size: 12px;">Show Password</p></div>
+        <div class="show-password"><input type="checkbox" onclick="myFunction()"><p style="font-size: 14px;">Show Password</p></div>
         <script>
           function myFunction() {
             var x = document.getElementById("password");

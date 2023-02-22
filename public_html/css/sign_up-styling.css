@@ -47,3 +47,10 @@ body {
 .title {
     font-size: 24px;
 }
+.terms {
+    color: var(--text-gray);
+}
+.terms, a{
+    color: var(--text-gray);
+    font-size: 14px;
+}

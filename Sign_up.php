@@ -81,7 +81,7 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
             <p>Confirm Password:&nbsp</p>
             <div class=text-box><input type="text" name="pword"></div>
         </div>
-        
+        <div class="terms"><p>By creating an account you agree to our <a href="Sign_up.php">terms and conditions</a></p></div>
         <div class=button><input type="submit" name="submit"></div>
     </form>
 </div>

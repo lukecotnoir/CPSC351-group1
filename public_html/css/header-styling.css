@@ -22,6 +22,10 @@
 .logo a{
     flex-grow: 2;
 }
+.logo a:hover {
+    border-style: none;
+    background-color: transparent;
+}
 .logo img {
     height: 50px;
     width: 165px;
