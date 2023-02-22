@@ -8,17 +8,17 @@ CREATE TABLE IF NOT EXISTS `Accounts` (
   `StartYear` INT NOT NULL,
   `GraduationYear` INT NOT NULL,
   `Email` VARCHAR(45) NULL,
-  `Acctype` VARCHAR(45) NULL 'should be determined student or alumni\n',
-  `Major` VARCHAR(45) NULL COMMENT ,
+  `Acctype` VARCHAR(45) NULL,
+  `Major` VARCHAR(45) NULL,
   `Minor(s)` VARCHAR(45) NULL,
   `Employer` VARCHAR(45) NULL,
   `JobTitle` VARCHAR(45) NULL,
-  `Password` VARCHAR(45) NOT NULL
+  `Password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`UserID`));
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Events`
+-- Table `Events`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Events` (
   `idEvents` INT NOT NULL,
@@ -27,28 +27,23 @@ CREATE TABLE IF NOT EXISTS `Events` (
   PRIMARY KEY (`idEvents`));
 
 
--- -----------------------------------------------------
--- Table `mydb`.`Message`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Message` (
   `MessageText` VARCHAR(120) NOT NULL,
   `Accounts_UserID_Sender` INT NOT NULL,
   `MessageTime` DATETIME NOT NULL,
   `Accounts_UserID_Receiver` INT NOT NULL,
-  
   PRIMARY KEY (`Accounts_UserID_Sender`, `MessageTime`, `Accounts_UserID_Receiver`),
-	FOREIGN KEY (`Accounts_UserID_Sender`)
-	REFERENCES `Accounts` (`UserID`)
+    FOREIGN KEY (`Accounts_UserID_Sender`)
+    REFERENCES `Accounts` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  FOREIGN KEY (`Accounts_UserID_Receiver`)
-  REFERENCES `Accounts` (`UserID`)
+    FOREIGN KEY (`Accounts_UserID_Receiver`)
+    REFERENCES `Accounts` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-
 -- -----------------------------------------------------
--- Table `mydb`.`Accounts_Attending`
+-- Table `Accounts_Attending`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Accounts_Attending` (
   `Events_idEvents` INT NOT NULL,
@@ -121,3 +116,62 @@ CREATE TABLE IF NOT EXISTS `Job Post` (
   REFERENCES `Accounts` (`UserID`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION);
+
+-- -----------------------------------------------------
+-- Table `Report_System`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Report_System` (
+  `RepSys_ID` INT NOT NULL,
+  `Account_UserID_Reporter` INT NOT NULL,
+  `DropType` VARCHAR(45) NOT NULL,
+  `Details` VARCHAR(250) NULL,
+  PRIMARY KEY (`RepSys_ID`, `Account_UserID_Reporter`),
+  	FOREIGN KEY (`Account_UserID_Reporter`)
+    REFERENCES `Accounts` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `Report_Other`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Report_Other` (
+  `RepOth_ID` INT NOT NULL,
+  `DropType` VARCHAR(45) NOT NULL,
+  `OtherDetail` VARCHAR(250) NULL,
+  `ReporterID` INT NOT NULL,
+  `Rep_Acc_ID` INT NULL,
+  `Rep_Comm_ID` INT NULL,
+  `Rep_Mess_ID` INT NULL,
+  `Rep_Post_ID` INT NULL,
+  `Reason` VARCHAR(250) NULL,
+  PRIMARY KEY (`RepOth_ID`, `ReporterID`),
+    FOREIGN KEY (`ReporterID`)
+    REFERENCES `Accounts` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+	
+    FOREIGN KEY (`ReporterID`)
+    REFERENCES `Accounts` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+    FOREIGN KEY (`Rep_Acc_ID`)
+    REFERENCES `Accounts` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+    FOREIGN KEY (`Rep_Comm_ID`)
+    REFERENCES `Community` (`CommID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+    FOREIGN KEY (`Rep_Mess_ID`)
+    REFERENCES `Message` (`Accounts_UserID_Sender`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+
+    FOREIGN KEY (`Rep_Post_ID`)
+    REFERENCES `Post` (`PostID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
