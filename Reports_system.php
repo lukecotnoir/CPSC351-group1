@@ -31,10 +31,6 @@
                     <p>Your email*:</p>
                     <div class="text-box"><input type = "text" name = "reporterEmail"></div>
                 </div>
-                <div class="line">
-                    <p>Reason for report:</p>
-                    <div class="text-box"><input type = "text" name = "reason"></div>
-                </div>
                 <div class="button"><input type="submit" name="submit"></div>
             </div>
         </div>

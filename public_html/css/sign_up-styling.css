@@ -8,7 +8,7 @@ body {
     border-color: var(--bg-blue-primary);
     border-radius: 5px;
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
-    max-width: 550px;
+    max-width: fit-content;
     margin: auto;
     margin-top: 15px;
 }
@@ -21,36 +21,40 @@ body {
     font-size: 18px;
     color: var(--text-primary);
 }
-.line, .two-items, .acctype {
+.line, .two-items {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     width: 75%;
 }
-.acctype {
-    justify-content: center;
+.line label {
+    font-size: 14px;
 }
-.text-box input{
-    font-size: 12px;
-    width: 150px;
+.two-items {
+    font-size: 14px;
 }
 .two-items input {
-    width: 100px;
+    width: 50px;
 }
-.accSelect {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.sign-up{
+    color: var(--text-gray);
+    font-size: 14px;
+}
+.sign-up a{
+    color: var(--text-primary);
+    font-size: 14px;
+}
+.sign-up a:hover{
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: var(--bg-blue-primary);
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: var(--text-primary);
+    color: black;
+    transition: 0.1s ease;
 }
 .title {
     font-size: 24px;
-}
-.terms {
-    color: var(--text-gray);
-}
-.terms, a{
-    color: var(--text-gray);
-    font-size: 14px;
 }
