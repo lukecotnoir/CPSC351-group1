@@ -9,17 +9,22 @@
             <div class="title"><p>Report A Problem</p></div>
             <p>*: required</p>
             <div class="type">
-                What are you reporting*?:
+                Where is the issue*?:
                 <select name = "dropdown">
-                    <option value = "Account" selected>Account Problem</option>
-                    <option value = "Message">Message</option>
-                    <option value = "Post">Post</option>
+                    <option value = "Whole site" selected>WholeSite</option>
+                    <option value = "Posts">Posts</option>
+                    <option value = "My Account">My Account</option>
+                    <option value = "Communities">Communities</option>
+                    <option value = "Events">Events</option>
+                    <option value = "Messages">Messages</option>
+                    <option value = "Login">Login</option>
+                    <option value = "Search">Search</option>
                     <option value = "Other">Other</option>
                 </select>
             </div>
             <div class="details">
                 <div class="line">
-                    <p>If other, explain:&nbsp</p>
+                    <p>Please provide extra details (If the item has an ID, please provide):&nbsp</p>
                     <div class="text-box"><input type ='text', name='reportdescribe'></div>
                 </div>
                 <div class="line">
@@ -39,21 +44,43 @@
 if(isset($_POST['dropdown'],$_POST['reporterID']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporterID = $_POST['reporterID'];
+    $reporterEmail = $_POST['reporterEmail'];
 
 
-    if(isset($_POST["reason"]))
+    if(isset($_POST["reporterdescribe"]))
     {
-        $reason = $_POST["reason"];
+        $details = $_POST["reportdescribe"];
     }
     else
     {
-        $reason = "none";
+        $details = "none";
     }
 
 echo "Report has been sent to Admin.";
 
-#This is where we will add the report to the table in SQL
-}
+
+
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
+
+include 'DB_Connection.php';
+
+#Need to figure out how to create a new ID every time
+
+
+$sql_insert = "INSERT INTO reports_system(DropType, Details, Email) 
+VALUES ('$reporttype', '$details', '$reporterEmail')";
+
+    if ($conn->query($sql_insert) === TRUE)
+    {
+    echo "<br>Your report has been recorded and sent to Admin";
+    } 
+    else 
+    {
+    echo "Error: " . $sql_insert . "<br>" . $conn->error;
+    }
+}
+else
+{
+    echo "<br>Please fill out all required information before submitting.";
+}
 ?>
