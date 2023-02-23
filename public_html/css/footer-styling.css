@@ -16,13 +16,3 @@ foot a {
     text-decoration: underline;
     padding: 2px;
 }
-foot a:hover {
-    border-style: solid;
-    border-width: 1.5px;
-    border-color: var(--bg-blue-primary);
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: var(--text-primary);
-    color: black;
-    transition: 0.1s ease;
-}
