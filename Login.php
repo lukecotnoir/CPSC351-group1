@@ -32,28 +32,17 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
     </form>
 </div>
 <?php
-if(isset($_POST['uname'], $_POST['pword']))
-{
+if(isset($_POST['uname'], $_POST['pword'])) {
   $user = $_POST['uname'];
   $pass = $_POST['pword'];
 
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "test_db";
-    //database connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname)
-      or die("bad connection: ".mysqli_connect_error());
-
-
-    //db set up string and run HttpQueryString
-    $sql = "SELECT * FROM users where Username = '".$user."'
-      and Password = '".$pass."'";
-    $result = $conn->query($sql);
+  include_once(realpath("resources/connection.php"));
+  $sql = "SELECT * FROM users where Username = '".$user."' and Password = '".$pass."'";
+  $result = $conn->query($sql);
 
     //db execute query
-    if ($result->num_rows > 0) {
+  if ($result->num_rows > 0) {
     // output data of each row
   /*  while($row = $result->fetch_assoc()) {
       echo "<p>password for ".$row['Username']." is: " . $row["Password"]. "<br>";
