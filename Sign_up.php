@@ -86,5 +86,6 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
     </form>
 </div>
 <?php
+
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>

@@ -6,7 +6,7 @@
     <link href="public_html/css/home-styling.css" rel="stylesheet">
 </head>
 <body>
-    <?php include 'event_calendar.php'; ?>
+    <?php include_once('event_calendar.php'); ?>
     <div>
         <?php
         // Define variables for the previous and next months
