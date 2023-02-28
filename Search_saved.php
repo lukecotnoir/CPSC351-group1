@@ -32,7 +32,7 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
 $searched = $_POST['searched'];
 $choice = $_POST['dropdown'];        #Set as account now
 
-if ($choice =="Accounts"&& isset($searched) )
+if ($choice =="Account" )
 {
     echo "You searched $searched in $choice";
 
@@ -48,27 +48,28 @@ if ($choice =="Accounts"&& isset($searched) )
                                                 JobTitle = '$searched'";
                                                
     $result = $conn->query($sql_find);
-    if ($result->num_rows >0){
-    echo "<br>Here are the results of your search:<br>";
-    while($row = $result->fetch_assoc()){
+    if ($result->num_rows >0)
+    {
+        echo "<br>Here are the results of your search:<br>";
+        while($row = $result->fetch_assoc())
+        {
         echo $row['UserID'];echo "||";echo $row['FirstName'];echo "||";echo $row['LastName'];
         echo "||";echo $row['StartYear'];echo'||';echo $row['GraduationYear'];echo'||';
         echo $row['Email'];echo'||'; echo $row['Acctype'];echo"||"; echo $row['Major'];
         echo "||";echo $row['Minor']; echo '||';echo $row['Employer'];echo'||';echo $row['JobTitle'];
         echo '<br> <br>';
-
-    }
+        }
         
     }
 	else {
-		echo "Error: ";
+		echo "There are no results for your search";
 	}
 }
 if ($choice == "Community")
 {
     echo "You searched $searched in $choice";
 
-    $sql_find =  "SELECT * FROM accounts WHERE CommID = '$searched'
+    $sql_find =  "SELECT * FROM community WHERE CommID = '$searched' OR
                                                 CommName = '$searched' OR
                                                 PCSEAffiliate = '$searched'OR
                                                 YearCreated = '$searched'OR
@@ -76,18 +77,18 @@ if ($choice == "Community")
                                                 PostCount = '$searched'";
                                                
     $result = $conn->query($sql_find);
-    if ($result->num_rows >0){
-    echo "<br>Here are the results of your search:<br>";
-    while($row = $result->fetch_assoc()){
-        echo $row['CommID'];echo "||";echo $row['CommName'];echo "||";echo $row['PCSEAffiliate'];
-        echo "||";echo $row['YearCreated'];echo'||';echo $row['MemberCount'];echo'||';
-        echo $row['PostCount'];
-
-    }
-        
+    if ($result->num_rows >0)
+    {
+        echo "<br>Here are the results of your search:<br>";
+        while($row = $result->fetch_assoc())
+        {
+            echo $row['CommID'];echo "||";echo $row['CommName'];echo "||";echo $row['PCSEAffiliate'];
+            echo "||";echo $row['YearCreated'];echo'||';echo $row['MemberCount'];echo'||';
+            echo $row['PostCount'];
+        }  
     }
 	else {
-		echo "Error: ";
+		echo "There are no results for your search ";
 	}
 }
 ?>
