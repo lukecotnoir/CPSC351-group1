@@ -6,10 +6,10 @@
 <body>
     <form action="Reports_other.php" method="post">
         <div class="report-form">
-            <div class="title"><p>Report an Issue</p></div>
+            <div class="title"><p>Report something/someone</p></div>
             <p>*: required</p>
             <div class="type">
-                Where is the issue*?:
+                What are you reporting*?:
                 <select name = "dropdown">
                     <option value = "Account" selected>Account</option>
                     <option value = "Post">Post</option>
