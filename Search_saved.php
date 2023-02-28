@@ -51,13 +51,17 @@ if ($choice =="Account" )
     if ($result->num_rows >0)
     {
         echo "<br>Here are the results of your search:<br>";
+        echo 'UserID||FirstName||LastName||StartYear||GraduationYear||Email||
+            Acctype||Major||Minor||Employer||JobTitle<br>';
         while($row = $result->fetch_assoc())
         {
-        echo $row['UserID'];echo "||";echo $row['FirstName'];echo "||";echo $row['LastName'];
-        echo "||";echo $row['StartYear'];echo'||';echo $row['GraduationYear'];echo'||';
-        echo $row['Email'];echo'||'; echo $row['Acctype'];echo"||"; echo $row['Major'];
-        echo "||";echo $row['Minor']; echo '||';echo $row['Employer'];echo'||';echo $row['JobTitle'];
-        echo '<br> <br>';
+            
+
+            echo $row['UserID'];echo "||";echo $row['FirstName'];echo "||";echo $row['LastName'];
+            echo "||";echo $row['StartYear'];echo'||';echo $row['GraduationYear'];echo'||';
+            echo $row['Email'];echo'||'; echo $row['Acctype'];echo"||"; echo $row['Major'];
+            echo "||";echo $row['Minor']; echo '||';echo $row['Employer'];echo'||';echo $row['JobTitle'];
+            echo '<br> <br>';
         }
         
     }
@@ -80,9 +84,10 @@ if ($choice == "Community")
     if ($result->num_rows >0)
     {
         echo "<br>Here are the results of your search:<br>";
+        echo 'CommID||CommName||PCSEAffiliate||YearCreated||MemberCount||PostCount<br>';
+            
         while($row = $result->fetch_assoc())
-        {
-            echo $row['CommID'];echo "||";echo $row['CommName'];echo "||";echo $row['PCSEAffiliate'];
+        {   echo $row['CommID'];echo "||";echo $row['CommName'];echo "||";echo $row['PCSEAffiliate'];
             echo "||";echo $row['YearCreated'];echo'||';echo $row['MemberCount'];echo'||';
             echo $row['PostCount'];
         }  
