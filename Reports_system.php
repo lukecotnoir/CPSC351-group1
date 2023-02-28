@@ -29,7 +29,7 @@
                 </div>
                 <div class="line">
                     <p>Your email*:</p>
-                    <div class="text-box"><input type = "text" name = "reporterEmail"></div>
+                    <div class="text-box"><input type = "text" name = "reporteremail"></div>
                 </div>
                 <div class="button"><input type="submit" name="submit"></div>
             </div>
@@ -37,10 +37,17 @@
     </form>
 
 <?php
-if(isset($_POST['dropdown'],$_POST['reporterID']))
+    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
+?>
+<?php
+include_once(realpath("resources/connection.php"));
+include_once(realpath(TEMPLATES_PATH . "/header.php"));    
+
+
+if(isset($_POST['dropdown'],$_POST['reporteremail']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporterEmail = $_POST['reporterEmail'];
+    $reporteremail = $_POST['reporteremail'];
 
 
     if(isset($_POST["reporterdescribe"]))
@@ -52,19 +59,11 @@ if(isset($_POST['dropdown'],$_POST['reporterID']))
         $details = "none";
     }
 
-echo "Report has been sent to Admin.";
+    #Need to figure out how to create a new ID every time
+    $reportID = '00001';
 
-
-
-include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-
-include 'DB_Connection.php';
-
-#Need to figure out how to create a new ID every time
-
-
-$sql_insert = "INSERT INTO reports_system(DropType, Details, Email) 
-VALUES ('$reporttype', '$details', '$reporterEmail')";
+    $sql_insert = "INSERT INTO report_system(RepSys_ID, Account_UserID_Reporter, DropType, Details) 
+                    VALUES ('$reportID','$reporteremail','$reporttype', '$details')";
 
     if ($conn->query($sql_insert) === TRUE)
     {
