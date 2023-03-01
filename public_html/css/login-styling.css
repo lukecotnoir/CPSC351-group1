@@ -8,7 +8,7 @@ body {
     border-color: var(--bg-blue-primary);
     border-radius: 5px;
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
-    max-width: fit-content;
+    max-width: 400px;
     margin: auto;
     margin-top: 15px;
 }
@@ -37,4 +37,6 @@ body {
 }
 .title {
     font-size: 24px;
+    text-align: center;
+    width: 50%;
 }

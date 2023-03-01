@@ -2,7 +2,7 @@
 -- Table `Accounts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Accounts` (
-  `UserID` INT NOT NULL,
+  `UserID` INT NOT NULL AUTO_INCREMENT,
   `FirstName` VARCHAR(45) NOT NULL,
   `LastName` VARCHAR(45) NOT NULL,
   `StartYear` INT NULL,
