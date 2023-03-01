@@ -1,6 +1,18 @@
 <?php
 include_once(realpath("resources/config.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
+    $email = $_POST['email'];
+    $fName = $_POST['fName'];
+    $lName = $_POST['lName'];
+    $startYr = $_POST['startYr'];
+    $gradYr = $_POST['gradYr'];
+    $major = $_POST['major'];
+    $minor = $_POST['minor'];
+    $acctype = $_POST['acctype'];
+    $empl = $_POST['empl'];
+    $job = $_POST['job'];
+    $pword = $_POST['pword'];
+    $confirm_pword = $_POST['confirm_pword'];
 ?>
 <link href=public_html/css/sign_up-styling.css rel="stylesheet">
 <div class=login-form>
@@ -10,36 +22,36 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
         <p style="color: var(--text-gray)">Fields indicated with * are required.</p>
         <div class="line">
             <p>* Email (CNU or work Email):&nbsp</p> 
-            <div class="text-box"><input type="text" name="email"></div>
+            <div class="text-box"><input type="text" name="email" value="<?php echo $email;?>"></div>
         </div>
         <div class="two-items">
             <div class="line">
                 <p>* First name:&nbsp</p>
-                <div class="text-box"><input type="text" name="fName"></div>
+                <div class="text-box"><input type="text" name="fName" value="<?php echo $fName; ?>"></div>
             </div>
             <div class="line">
                 <p>* Last name:&nbsp</p>
-                <div class="text-box"><input type="text" name="lName"></div>
+                <div class="text-box"><input type="text" name="lName" value="<?php echo $lName; ?>"></div>
             </div>
         </div>
         <div class="two-items">
             <div class="line">
                 <p>Start Year:&nbsp</p>
-                <div class="text-box"><input type="text" name="startYr"></div>
+                <div class="text-box"><input type="text" name="startYr" value="<?php echo $startYr; ?>"></div>
             </div>
             <div class="line">
                 <p>* Grad Year:&nbsp</p>
-                <div class="text-box"><input type="text" name="gradYr"></div>
+                <div class="text-box"><input type="text" name="gradYr" value="<?php echo $gradYr; ?>"></div>
             </div>
         </div>
         <div class="two-items">
             <div class="line">
                 <p>Major(s):</p>
-                <div class="text-box"><input type="text" name="major"></div>
+                <div class="text-box"><input type="text" name="major" value="<?php echo $major; ?>"></div>
             </div>
             <div class="line">
                 <p>Minor(s):</p>
-                <div class="text-box"><input type="text" name="minor"></div>
+                <div class="text-box"><input type="text" name="minor" value="<?php echo $minor; ?>"></div>
             </div>
         </div>
         <div class="line">
@@ -58,11 +70,11 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
         <div id="textboxes" class="two-items" style="display: none">
             <div class="line">
                 <p>Employer:&nbsp</p>
-                <div class="text-box"><input type="text" name="empl"></div>
+                <div class="text-box"><input type="text" name="empl" value="<?php echo $empl; ?>"></div>
             </div>
             <div class="line">
                 <p>Job Title:&nbsp</p>
-                <div class="text-box"><input type="text" name="job"></div>
+                <div class="text-box"><input type="text" name="job" value="<?php echo $job; ?>"></div>
             </div>
         </div>
         <script>
@@ -77,16 +89,15 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
         </script>
         <div class="line">
             <p>* Create Password:&nbsp</p>
-            <div class=text-box><input type="text" name="pword"></div>
+            <div class=text-box><input type="text" name="pword" value="<?php echo htmlspecialchars($form_fields['pword']); ?>"></div>
         </div>
         <div class="line">
             <p>* Confirm Password:&nbsp</p>
-            <div class=text-box><input type="text" name="confirm_pword"></div>
+            <div class=text-box><input type="text" name="confirm_pword" value="<?php echo htmlspecialchars($form_fields['confirm_pword']); ?>"></div>
         </div>
         <div class="terms"><p>By creating an account you agree to our <a href="Sign_up.php">terms and conditions</a></p></div>
         <div class=button><input type="submit" name="submit"></div>
 <?php
-include_once(realpath("resources/connection.php"));
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_error_flag = true;
 
@@ -102,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'empl'     => FILTER_UNSAFE_RAW,
         'job'      => FILTER_UNSAFE_RAW,
         'pword'    => FILTER_UNSAFE_RAW,
-        'confirm_pword' => FILTER_UNSAFE_RAW,
+        'confirm_pword' => FILTER_UNSAFE_RAW
     );
 
     $optional_fields = array(
@@ -110,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'major'   => "",
         'minor'   => "",
         'empl'    => "",
-        'job'     => "",
+        'job'     => ""
     );
 
     $error_description = array(
@@ -120,13 +131,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'gradYr' => "Missing or invalid grad year",
         'acctype' => "Missing account type",
         'pword' => "Missing password or passwords don't match",
-        'confirm_pword' => "Missing password",
+        'confirm_pword' => "Missing password"
     );
-
     $form_data = filter_input_array(INPUT_POST, $form_filter);
     foreach($form_data as $form_input => $value){
         if($form_input == 'pword') {
-            if($_POST['pword'] !== $_POST['confirm_pword']){
+            if($pword !== $confirm_pword){
                 $invalid_inputs[] = $form_input;
             }
         }
@@ -142,19 +152,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($input_error_flag){
         foreach($invalid_inputs as $key => $form_input){
             if(array_key_exists($form_input, $error_description)){
-                echo "<div class='line'><p>".$error_description[$form_input]."</p></div>";
+                echo "<div class='line'><p style='color: red>".$error_description[$form_input]."</p></div>";
             }
         }
     }
     else{
-        $sql = "SELECT * FROM Accounts where Email = '".$_POST['email']."'";
+        include_once(realpath("resources/connection.php"));
+        $sql = "SELECT * FROM Accounts where Email = '".$email."'";
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             echo "<div class='line'><p>It looks like you already have an account. Go back to the login page to log in</p></div>";
         }
         else {
-            $sql = "INSERT INTO Accounts (UserID, FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minors, Employer, JobTitle, Password) 
-            VALUES (2, '".$_POST['fName']."', '".$_POST['lName']."', '".$_POST['startYr']."', '".$_POST['gradYr']."', '".$_POST['email']."', '".$_POST['acctype']."', '".$_POST['major']."', '".$_POST['minor']."', '".$_POST['empl']."', '".$_POST['job']."', '".$_POST['pword']."')";
+            $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minors, Employer, JobTitle, Password) 
+            VALUES ('".$fName."', '".$lName."', '".$startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
             $conn->query($sql);
             echo "<div class='line'><p>Success!</p></div>";
         }
