@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `Accounts` (
   `Email` VARCHAR(45) NULL,
   `Acctype` VARCHAR(45) NULL,
   `Major` VARCHAR(45) NULL,
-  `Minor(s)` VARCHAR(45) NULL,
+  `Minors` VARCHAR(45) NULL,
   `Employer` VARCHAR(45) NULL,
   `JobTitle` VARCHAR(45) NULL,
   `Password` VARCHAR(45) NOT NULL,

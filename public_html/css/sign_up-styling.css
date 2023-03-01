@@ -18,7 +18,7 @@ body {
     align-items: center;
     justify-content: space-around;
     padding: 15px 15px;
-    font-size: 18px;
+    font-size: 14px;
     color: var(--text-primary);
 }
 .line, .two-items, .acctype {
@@ -45,12 +45,22 @@ body {
     justify-content: center;
 }
  .title {
-     font-size: 24px;
+    font-size: 24px;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 2px;
  }
  .terms {
-     color: var(--text-gray);
+    color: var(--text-gray);
  }
  .terms, a{
-     color: var(--text-gray);
-     font-size: 14px;
+    color: var(--text-gray);
+    font-size: 12px;
  }
+ .show-password {
+    width: 110px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
