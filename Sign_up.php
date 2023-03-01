@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($input_error_flag){
         foreach($invalid_inputs as $key => $form_input){
             if(array_key_exists($form_input, $error_description)){
-                echo "<div class='line'><p style='color: red>".$error_description[$form_input]."</p></div>";
+                echo "<div class='line'><p style='color: red'>".$error_description[$form_input]."</p></div>";
             }
         }
     }
@@ -164,9 +164,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<div class='line'><p>It looks like you already have an account. Go back to the login page to log in</p></div>";
         }
         else {
-            $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minors, Employer, JobTitle, Password) 
-            VALUES ('".$fName."', '".$lName."', '".$startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
+            echo "test1";
+            $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minor, Employer, JobTitle, Password) 
+            VALUES ('".$fName."', '".$lName."', '".(int) $startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
+            echo "test2";
+            echo "$startYr";
             $conn->query($sql);
+            echo "test3";
             echo "<div class='line'><p>Success!</p></div>";
         }
     }
