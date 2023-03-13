@@ -39,7 +39,7 @@ if(isset($_POST['uname'], $_POST['pword'])) {
 
 
   include_once(realpath("resources/connection.php"));
-  $sql = "SELECT * FROM users where Username = '".$user."' and Password = '".$pass."'";
+  $sql = "SELECT * FROM accounts where Email = '".$user."' and Password = '".$pass."'";
   $result = $conn->query($sql);
 
     //db execute query
