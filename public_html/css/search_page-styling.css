@@ -21,6 +21,7 @@ select {
     margin-top: 15px;
     padding: 15px 15px;
     font-size: 18px;
+    color: var(--text-primary);
 }
 
 .type-search {
@@ -28,7 +29,6 @@ select {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: var(--text-primary);
 }
 .line, .two-items {
     display: flex;
@@ -36,6 +36,7 @@ select {
     align-items: center;
     justify-content: space-evenly;
     width: 75%;
+    color: var(--text-primary);
 }
 .search-input {
     display: flex;
