@@ -16,7 +16,7 @@
         <div class="menu">
             <a href="Search_saved.php">Search</a>
             <a href="Event_board.php">Event Board</a>
-            <a href="view_requests.php">Communities</a>
+            <a href="Communities.php">Communities</a>
             <a href="#">Messages</a>
             <a href="Login.php">Login</a>
         </div>

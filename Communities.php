@@ -1,7 +1,7 @@
 <?php
     include_once(realpath("resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
-      $choice = $_POST['CommName'];
+      $choice = $_POST['comm_type'];
       $CommName = $_POST['PCSEAffiliate'];
       $Accounts_UserID = $_POST['Accounts_UserID'];
       $Reason = $_POST['Reason'];
@@ -9,7 +9,7 @@
 
 <link href="public_html/css/comm_request-styling.css" rel="stylesheet">
 <div class="comm_request-form">
-    <form action="view_requests.php" method="post">
+    <form action="Communities.php" method="post">
       <div class='line'>
         <div class = 'title'><p>Please select an option</p></div>
         <div class ="line">
@@ -73,8 +73,9 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
 
 $want = $_POST['comm_type'];
 
-if ($want =='CommunityRequests')
+if ($choice =='CommunityRequests')
 {
+  echo $choice;
   $sql = "SELECT * FROM comm_requests";
   $result = $conn->query($sql);
 
@@ -90,14 +91,16 @@ if ($want =='CommunityRequests')
   }
 }
 
-if ($want =='MakeRequest')
+if ($choice =='MakeRequest')
 {
-  if(isset($_POST['comm_name'], $_POST['affiliate_name'], $_POST['affiliate_email']))
-  {
+  #echo $choice;
+  
     $CommName = $_POST['CommName'];
     $PCSEAffiliate = $_POST['PCSEAffiliate'];
     $Accounts_UserID= $_POST['Accounts_UserID'];
     $Reason = $_POST['Reason'];
+
+    #echo $CommName;echo "||";echo $PCSEAffiliate;echo"||";echo $Accounts_UserID;echo "||";echo $Reason;
   
     $sql = "INSERT INTO comm_requests(CommName, PCSEAffiliate, Accounts_UserID, Reason)
     VALUES ('$CommName', '$PCSEAffiliate', '$Accounts_UserID', '$Reason')";
@@ -106,7 +109,7 @@ if ($want =='MakeRequest')
       echo "<h4> Request Successfully Submitted";
     }
   
-  }
+  
 }
 
 
