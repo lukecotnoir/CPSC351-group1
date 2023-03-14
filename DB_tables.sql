@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `Accounts` (
 -- Table `Events`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Events` (
-  `idEvents` INT NOT NULL,
+  `idEvents` INT NOT NULL AUTO_INCREMENT,
   `EventDate` VARCHAR(45) NOT NULL,
   `EventLocation` VARCHAR(45) NULL,
   PRIMARY KEY (`idEvents`));
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `Accounts_Attending` (
 -- Table `Post`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Post` (
-  `PostID` INT NOT NULL,
+  `PostID` INT NOT NULL AUTO_INCREMENT,
   `Accounts_CNUID` INT NOT NULL,
   `PostTime` DATETIME NULL,
   PRIMARY KEY (`PostID`, `Accounts_CNUID`),
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `Post` (
 -- Table `Community`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Community` (
-  `CommID` INT NOT NULL,
+  `CommID` INT NOT NULL AUTO_INCREMENT,
   `CommName` VARCHAR(45) NOT NULL,
   `PCSEAffiliate` VARCHAR(45) NULL,
   `YearCreated` INT NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `Accounts_in_Comm` (
 -- Table `Job Post`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Job Post` (
-  `idJobPost` INT NOT NULL,
+  `idJobPost` INT NOT NULL AUTO_INCREMENT,
   `Job_location` VARCHAR(45) NULL,
   `Alumni_idAlumni` INT NOT NULL,
   `Accounts_UserID` INT NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `Job Post` (
 -- Table `Report_System`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Report_System` (
-  `RepSys_ID` INT NOT NULL,
+  `RepSys_ID` INT NOT NULL AUTO_INCREMENT,
   `Account_UserID_Reporter` INT NOT NULL,
   `DropType` VARCHAR(45) NOT NULL,
   `Details` VARCHAR(250) NULL,
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `Report_System` (
 -- Table `Report_Other`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Report_Other` (
-  `RepOth_ID` INT NOT NULL,
+  `RepOth_ID` INT NOT NULL AUTO_INCREMENT,
   `DropType` VARCHAR(45) NOT NULL,
   `OtherDetail` VARCHAR(250) NULL,
   `ReporterID` INT NOT NULL,

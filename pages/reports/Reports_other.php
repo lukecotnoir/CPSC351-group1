@@ -82,28 +82,26 @@ if(isset($_POST['dropdown'],$_POST['reporterID']))
 
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 
-    #Need to figure out how to create a new ID every time
-    $repoth_ID = 00002;
-
+    
     if($droptype=="Account")
     {
-        $sql_insert = "INSERT INTO reports_other(RepOth_ID, DropType, OtherDetail, ReporterID, Rep_Acc_ID, Reason) 
-        VALUES ('$repoth_ID','$reporttype', '$details', '$reporter_ID','$rep_ID' , '$reason')";
+        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Acc_ID, Reason) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID' , '$reason')";
     }
     if($droptype=="Post")
     {
-        $sql_insert = "INSERT INTO reports_other(RepOth_ID, DropType, OtherDetail, ReporterID, Rep_Post_ID, Reason) 
-        VALUES ('$repoth_ID','$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
+        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Post_ID, Reason) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
     }
     if($droptype=="Community")
     {
-        $sql_insert = "INSERT INTO reports_other(RepOth_ID, DropType, OtherDetail, ReporterID, Rep_Comm_ID, Reason) 
-        VALUES ('$repoth_ID','$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
+        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Comm_ID, Reason) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
     }
     if($droptype=="Message")
     {
-        $sql_insert = "INSERT INTO reports_other(RepOth_ID, DropType, OtherDetail, ReporterID, Rep_Mess_ID, Reason) 
-        VALUES ('$repoth_ID','$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
+        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Mess_ID, Reason) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
     }
     
     

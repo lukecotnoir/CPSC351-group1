@@ -59,11 +59,10 @@ if(isset($_POST['dropdown'],$_POST['reporteremail']))
         $details = "none";
     }
 
-    #Need to figure out how to create a new ID every time
-    $reportID = '00001';
+    
 
-    $sql_insert = "INSERT INTO report_system(RepSys_ID, Account_UserID_Reporter, DropType, Details) 
-                    VALUES ('$reportID','$reporteremail','$reporttype', '$details')";
+    $sql_insert = "INSERT INTO report_system(Account_UserID_Reporter, DropType, Details) 
+                    VALUES ('$reporteremail','$reporttype', '$details')";
 
     if ($conn->query($sql_insert) === TRUE)
     {
