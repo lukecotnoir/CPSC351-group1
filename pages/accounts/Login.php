@@ -1,15 +1,15 @@
 <?php
-include_once(realpath("resources/config.php"));
+include_once(realpath("../../resources/config.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
 ?>
-<link href=public_html/css/login-styling.css rel="stylesheet">
+<link href=../../public_html/css/login-styling.css rel="stylesheet">
 <div class=login-form>
     <form action="Login.php" method="post">
         <div class="title"><p>Enter your login information here:</p></div>
         <hr style="width: 75%">
         <div class="username">
             <p>Email:&nbsp</p> 
-            <div class=text-box><input type="text" name="uname"></div>
+            <div class=text-box><input type="text" name="email"></div>
         </div>
         <div class="password">
             <p>Password:&nbsp</p>
@@ -30,33 +30,31 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
         <div class="sign-up">
             <p>Don't have an account: <a href=Sign_up.php>Sign up!</a></p>
         </div>
-    </form>
-</div>
 <?php
-if(isset($_POST['uname'], $_POST['pword'])) {
-  $user = $_POST['uname'];
-  $pass = $_POST['pword'];
+if(isset($_POST['email'], $_POST['pword'])) {
+    $email = $_POST['email'];
+    $pass = $_POST['pword'];
 
-
-  include_once(realpath("resources/connection.php"));
-  $sql = "SELECT * FROM users where Username = '".$user."' and Password = '".$pass."'";
-  $result = $conn->query($sql);
+    include_once(realpath(CONNECTION_PATH));
+    $sql = "SELECT * FROM accounts where Email = '".$email."' and Password = '".$pass."'";
+    $result = $conn->query($sql);
 
     //db execute query
-  if ($result->num_rows > 0) {
-    // output data of each row
-  /*  while($row = $result->fetch_assoc()) {
-      echo "<p>password for ".$row['Username']." is: " . $row["Password"]. "<br>";
-      }
-    } else {
-      echo "0 results";*/
-        echo "<p>You got in to the system";
-      }
-      else {
-        echo "<p>You are rejected";
-      }
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if ($pass !== $row['Password']) {
+            echo "<p>Incorrect password.</p>";
+        }
+    }
+    else {
+        echo "<p>It looks like you don't have an account.</p>";
+    }
 
     $conn->close();
 }
+?>
+    </form>
+</div>
+<?php
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>

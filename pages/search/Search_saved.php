@@ -1,8 +1,8 @@
 <?php
-    include_once(realpath("resources/config.php"));
+    include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
 ?>
-<link href="public_html/css/search-page-styling.css" rel="stylesheet">
+<link href="../../public_html/css/search-page-styling.css" rel="stylesheet">
 <div class="search-form">
     <form action="Search_saved.php" method="post">
         <div class="type-search">
@@ -26,9 +26,6 @@
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
 <?php
-include_once(realpath("resources/connection.php"));
-include_once(realpath(TEMPLATES_PATH . "/header.php"));
-
 $searched = $_POST['searched'];
 $choice = $_POST['dropdown'];        #Set as account now
 

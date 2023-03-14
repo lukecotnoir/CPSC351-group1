@@ -1,20 +1,20 @@
 <?php
-include_once(realpath("resources/config.php"));
+include_once(realpath("../../resources/config.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
-    $email = $_POST['email'];
-    $fName = $_POST['fName'];
-    $lName = $_POST['lName'];
-    $startYr = $_POST['startYr'];
-    $gradYr = $_POST['gradYr'];
-    $major = $_POST['major'];
-    $minor = $_POST['minor'];
-    $acctype = $_POST['acctype'];
-    $empl = $_POST['empl'];
-    $job = $_POST['job'];
-    $pword = $_POST['pword'];
+    $email         = $_POST['email'];
+    $fName         = $_POST['fName'];
+    $lName         = $_POST['lName'];
+    $startYr       = $_POST['startYr'];
+    $gradYr        = $_POST['gradYr'];
+    $major         = $_POST['major'];
+    $minor         = $_POST['minor'];
+    $acctype       = $_POST['acctype'];
+    $empl          = $_POST['empl'];
+    $job           = $_POST['job'];
+    $pword         = $_POST['pword'];
     $confirm_pword = $_POST['confirm_pword'];
 ?>
-<link href=public_html/css/sign_up-styling.css rel="stylesheet">
+<link href=/CPSC351-GROUP1/public_html/css/sign_up-styling.css rel="stylesheet">
 <div class=login-form>
     <form action="Sign_up.php" method="post">
         <div class="title"><p>Enter information to register for a new account:</p></div>
@@ -89,11 +89,11 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
         </script>
         <div class="line">
             <p>* Create Password:&nbsp</p>
-            <div class=text-box><input type="text" name="pword" value="<?php echo htmlspecialchars($form_fields['pword']); ?>"></div>
+            <div class=text-box><input type="text" name="pword"></div>
         </div>
         <div class="line">
             <p>* Confirm Password:&nbsp</p>
-            <div class=text-box><input type="text" name="confirm_pword" value="<?php echo htmlspecialchars($form_fields['confirm_pword']); ?>"></div>
+            <div class=text-box><input type="text" name="confirm_pword"></div>
         </div>
         <div class="terms"><p>By creating an account you agree to our <a href="Sign_up.php">terms and conditions</a></p></div>
         <div class=button><input type="submit" name="submit"></div>
@@ -102,17 +102,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_error_flag = true;
 
     $form_filter = array(
-        'fName'    => FILTER_UNSAFE_RAW,
-        'lName'    => FILTER_UNSAFE_RAW,
-        'email'    => FILTER_SANITIZE_EMAIL,
-        'startYr'  => FILTER_SANITIZE_NUMBER_INT,
-        'gradYr'   => FILTER_SANITIZE_NUMBER_INT,
-        'major'    => FILTER_UNSAFE_RAW,
-        'minor'    => FILTER_UNSAFE_RAW,
-        'acctype'  => FILTER_UNSAFE_RAW,
-        'empl'     => FILTER_UNSAFE_RAW,
-        'job'      => FILTER_UNSAFE_RAW,
-        'pword'    => FILTER_UNSAFE_RAW,
+        'fName'         => FILTER_UNSAFE_RAW,
+        'lName'         => FILTER_UNSAFE_RAW,
+        'email'         => FILTER_SANITIZE_EMAIL,
+        'startYr'       => FILTER_SANITIZE_NUMBER_INT,
+        'gradYr'        => FILTER_SANITIZE_NUMBER_INT,
+        'major'         => FILTER_UNSAFE_RAW,
+        'minor'         => FILTER_UNSAFE_RAW,
+        'acctype'       => FILTER_UNSAFE_RAW,
+        'empl'          => FILTER_UNSAFE_RAW,
+        'job'           => FILTER_UNSAFE_RAW,
+        'pword'         => FILTER_UNSAFE_RAW,
         'confirm_pword' => FILTER_UNSAFE_RAW
     );
 
@@ -157,20 +157,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     else{
-        include_once(realpath("resources/connection.php"));
+        include_once(realpath(CONNECTION_PATH));
         $sql = "SELECT * FROM Accounts where Email = '".$email."'";
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             echo "<div class='line'><p>It looks like you already have an account. Go back to the login page to log in</p></div>";
         }
         else {
-            echo "test1";
             $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minor, Employer, JobTitle, Password) 
             VALUES ('".$fName."', '".$lName."', '".(int) $startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
-            echo "test2";
-            echo "$startYr";
             $conn->query($sql);
-            echo "test3";
             echo "<div class='line'><p>Success!</p></div>";
         }
     }

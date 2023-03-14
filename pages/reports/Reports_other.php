@@ -1,8 +1,8 @@
 <?php
-    include_once(realpath("resources/config.php"));
+    include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
 ?>
-<link href="public_html/css/report-page.css" rel="stylesheet">
+<link href="/CPSC351-GROUP1/public_html/css/report-page.css" rel="stylesheet">
 <body>
     <form action="Reports_other.php" method="post">
         <div class="report-form">
@@ -43,7 +43,7 @@
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
 <?php
-include_once(realpath("resources/connection.php"));
+include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));    
 
 
