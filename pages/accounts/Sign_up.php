@@ -1,6 +1,7 @@
 <?php
 include_once(realpath("../../resources/config.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
+if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $email         = $_POST['email'];
     $fName         = $_POST['fName'];
     $lName         = $_POST['lName'];
@@ -13,6 +14,7 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
     $job           = $_POST['job'];
     $pword         = $_POST['pword'];
     $confirm_pword = $_POST['confirm_pword'];
+}
 ?>
 <link href=/CPSC351-GROUP1/public_html/css/sign_up-styling.css rel="stylesheet">
 <div class=login-form>
