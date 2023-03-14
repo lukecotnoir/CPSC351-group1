@@ -24,36 +24,36 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         <p style="color: var(--text-gray)">Fields indicated with * are required.</p>
         <div class="line">
             <p>* Email (CNU or work Email):&nbsp</p> 
-            <div class="text-box"><input type="text" name="email" value="<?php echo $email;?>"></div>
+            <div class="text-box"><input type="text" name="email" value="<?php if(isset($email)) echo $email;?>"></div>
         </div>
         <div class="two-items">
             <div class="line">
                 <p>* First name:&nbsp</p>
-                <div class="text-box"><input type="text" name="fName" value="<?php echo $fName; ?>"></div>
+                <div class="text-box"><input type="text" name="fName" value="<?php if(isset($fName)) echo $fName; ?>"></div>
             </div>
             <div class="line">
                 <p>* Last name:&nbsp</p>
-                <div class="text-box"><input type="text" name="lName" value="<?php echo $lName; ?>"></div>
+                <div class="text-box"><input type="text" name="lName" value="<?php if(isset($lName)) echo $lName; ?>"></div>
             </div>
         </div>
         <div class="two-items">
             <div class="line">
                 <p>Start Year:&nbsp</p>
-                <div class="text-box"><input type="text" name="startYr" value="<?php echo $startYr; ?>"></div>
+                <div class="text-box"><input type="text" name="startYr" value="<?php if(isset($startYr)) echo $startYr; ?>"></div>
             </div>
             <div class="line">
                 <p>* Grad Year:&nbsp</p>
-                <div class="text-box"><input type="text" name="gradYr" value="<?php echo $gradYr; ?>"></div>
+                <div class="text-box"><input type="text" name="gradYr" value="<?php if(isset($gradYr))echo $gradYr; ?>"></div>
             </div>
         </div>
         <div class="two-items">
             <div class="line">
                 <p>Major(s):</p>
-                <div class="text-box"><input type="text" name="major" value="<?php echo $major; ?>"></div>
+                <div class="text-box"><input type="text" name="major" value="<?php if(isset($major)) echo $major; ?>"></div>
             </div>
             <div class="line">
                 <p>Minor(s):</p>
-                <div class="text-box"><input type="text" name="minor" value="<?php echo $minor; ?>"></div>
+                <div class="text-box"><input type="text" name="minor" value="<?php if(isset($minor)) echo $minor; ?>"></div>
             </div>
         </div>
         <div class="line">
@@ -72,11 +72,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         <div id="textboxes" class="two-items" style="display: none">
             <div class="line">
                 <p>Employer:&nbsp</p>
-                <div class="text-box"><input type="text" name="empl" value="<?php echo $empl; ?>"></div>
+                <div class="text-box"><input type="text" name="empl" value="<?php if(isset($empl)) echo $empl; ?>"></div>
             </div>
             <div class="line">
                 <p>Job Title:&nbsp</p>
-                <div class="text-box"><input type="text" name="job" value="<?php echo $job; ?>"></div>
+                <div class="text-box"><input type="text" name="job" value="<?php if(isset($job)) echo $job; ?>"></div>
             </div>
         </div>
         <script>
