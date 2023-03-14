@@ -24,12 +24,12 @@
             </div>
             <div class="details">
                 <div class="line">
-                    <p>Please provide extra details (If the item has an ID, please provide):&nbsp</p>
-                    <div class="text-box"><input type ='text', name='reportdescribe'></div>
+                    <p>Your ID*:</p>
+                    <div class="text-box"><input type = "text" name = "reporterID"></div>
                 </div>
                 <div class="line">
-                    <p>Your email*:</p>
-                    <div class="text-box"><input type = "text" name = "reporteremail"></div>
+                    <p>Please provide extra details (If the item has an ID, please provide):&nbsp</p>
+                    <div class="text-box"><input type ='text', name='reportdescribe'></div>
                 </div>
                 <div class="button"><input type="submit" name="submit"></div>
             </div>
@@ -44,25 +44,20 @@ include_once(realpath("resources/connection.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));    
 
 
-if(isset($_POST['dropdown'],$_POST['reporteremail']))
+if(isset($_POST['dropdown'],$_POST['reporterID']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporteremail = $_POST['reporteremail'];
-
-
-    if(isset($_POST["reporterdescribe"]))
-    {
-        $details = $_POST["reportdescribe"];
-    }
+    $reporterID = $_POST['reporterID'];
+    
+    if(isset($_POST["reportdescribe"]))
+    {$details = $_POST["reportdescribe"];}
     else
-    {
-        $details = "none";
-    }
+    {$details = "none";}
 
     
 
     $sql_insert = "INSERT INTO report_system(Account_UserID_Reporter, DropType, Details) 
-                    VALUES ('$reporteremail','$reporttype', '$details')";
+                    VALUES ('$reporterID','$reporttype', '$details')";
 
     if ($conn->query($sql_insert) === TRUE)
     {
