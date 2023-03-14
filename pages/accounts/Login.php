@@ -36,7 +36,7 @@ if(isset($_POST['email'], $_POST['pword'])) {
     $pass = $_POST['pword'];
 
     include_once(realpath(CONNECTION_PATH));
-    $sql = "SELECT * FROM accounts where Email = '".$email."' and Password = '".$pass."'";
+    $sql = "SELECT * FROM accounts where Email = '".$email."'";
     $result = $conn->query($sql);
 
     //db execute query
