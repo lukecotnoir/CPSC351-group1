@@ -1,0 +1,77 @@
+body {
+    background-color: var(--bg-dark);
+}
+select {
+    margin-left: 15px;
+}
+
+.comm_request-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-style: solid;
+    background-color: var(--bg-dark);
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+    border-radius: 5px;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    max-width: fit-content;
+    margin: auto;
+    margin-top: 15px;
+    padding: 15px 15px;
+    font-size: 18px;
+}
+
+.type-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-primary);
+}
+.line, .two-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 75%;
+}
+.comm_request-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.commtype {
+    justify-content: center;
+}
+.text-box input{
+    font-size: 12px;
+    width: 200px;
+}
+.two-items input {
+    width: 100px;
+}
+
+.CommSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ .title {
+    font-size: 24px;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 2px;
+ }
+ .terms {
+    color: var(--text-gray);
+ }
+ .terms, a{
+    color: var(--text-gray);
+    font-size: 12px;
+ }
+ 

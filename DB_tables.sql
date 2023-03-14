@@ -175,3 +175,18 @@ CREATE TABLE IF NOT EXISTS `Report_Other` (
     REFERENCES `Post` (`PostID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+    -- -----------------------------------------------------
+-- Table `Comm_Requests`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Comm_Requests` (
+  `request_ID` INT NOT NULL AUTO_INCREMENT,
+  `CommName` VARCHAR(45) NULL,
+  `PCSEAffiliate` VARCHAR(45) NOT NULL,
+  `Accounts_UserID` INT NOT NULL,
+  `Reason` VARCHAR(250) NULL,
+  PRIMARY KEY (`request_ID`, `Accounts_UserID`),
+    FOREIGN KEY (`Accounts_UserID`)
+    REFERENCES `Accounts` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
