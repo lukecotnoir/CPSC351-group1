@@ -1,5 +1,5 @@
 <?php
-    include_once(realpath("resources/config.php"));
+    include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
       $choice = $_POST['comm_type'];
       $CommName = $_POST['PCSEAffiliate'];
@@ -7,7 +7,7 @@
       $Reason = $_POST['Reason'];
 ?>
 
-<link href="public_html/css/comm_request-styling.css" rel="stylesheet">
+<link href="../../public_html/css/comm_request-styling.css" rel="stylesheet">
 <div class="comm_request-form">
     <form action="Communities.php" method="post">
       <div class='line'>
@@ -68,7 +68,7 @@
 ?>
 
 <?php
-include_once(realpath("resources/connection.php"));
+include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
 
 $want = $_POST['comm_type'];
