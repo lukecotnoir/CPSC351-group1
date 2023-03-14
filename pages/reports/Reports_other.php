@@ -14,7 +14,6 @@
                     <option value = "Account" selected>Account</option>
                     <option value = "Post">Post</option>
                     <option value = "Community">Community</option>
-                    <option value = "Message">Message</option>
                 </select>
             </div>
             <div class="details">
@@ -49,7 +48,7 @@ include_once(realpath(TEMPLATES_PATH . "/header.php"));
 
 if(isset($_POST['dropdown'],$_POST['reporterID']))
 {
-    $droptype = $_POST['dropdown'];
+    $reporttype = $_POST['dropdown'];
     $reporter_ID = $_POST['reporterID'];
 
 
@@ -83,26 +82,26 @@ if(isset($_POST['dropdown'],$_POST['reporterID']))
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 
     
-    if($droptype=="Account")
+    if($reporttype=="Account")
     {
-        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Acc_ID, Reason) 
+        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Acc_ID, Reason) 
         VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID' , '$reason')";
     }
-    if($droptype=="Post")
+    if($reporttype=="Post")
     {
-        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Post_ID, Reason) 
+        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Post_ID, Reason) 
         VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
     }
-    if($droptype=="Community")
+    if($reporttype=="Community")
     {
-        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Comm_ID, Reason) 
+        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Comm_ID, Reason) 
         VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
     }
-    if($droptype=="Message")
+    /*if($reporttype=="Message")
     {
-        $sql_insert = "INSERT INTO reports_other(DropType, OtherDetail, ReporterID, Rep_Mess_ID, Reason) 
+        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Mess_ID, Reason) 
         VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
-    }
+    }*/
     
     
 

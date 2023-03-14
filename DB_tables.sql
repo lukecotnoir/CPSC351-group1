@@ -150,11 +150,6 @@ CREATE TABLE IF NOT EXISTS `Report_Other` (
     REFERENCES `Accounts` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-	
-    FOREIGN KEY (`ReporterID`)
-    REFERENCES `Accounts` (`UserID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   
     FOREIGN KEY (`Rep_Acc_ID`)
     REFERENCES `Accounts` (`UserID`)
