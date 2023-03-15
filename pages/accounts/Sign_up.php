@@ -1,7 +1,7 @@
 <?php
 include_once(realpath("../../resources/config.php"));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $email         = $_POST['email'];
     $fName         = $_POST['fName'];
     $lName         = $_POST['lName'];

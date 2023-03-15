@@ -32,7 +32,7 @@
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
 <?php
-include_once(realpath("resources/connection.php"));
+include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));
 $searched = $_POST['searched'];
 $choice = $_POST['search_type'];
