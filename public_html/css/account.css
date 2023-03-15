@@ -1,0 +1,33 @@
+body {
+    background-color: var(--bg-dark);
+}
+.account_info {
+    border-style: solid;
+    background-color: var(--bg-dark);
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+    border-radius: 5px;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    max-width: 550px;
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 15px;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+.title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.line, .two-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+}

@@ -23,26 +23,26 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         <hr style="width: 75%">
         <p style="color: var(--text-gray)">Fields indicated with * are required.</p>
         <div class="line">
-            <p>* Email (CNU or work Email):&nbsp</p> 
+            <p>* Email (CNU or work Email):&nbsp;</p> 
             <div class="text-box"><input type="text" name="email" value="<?php if(isset($email)) echo $email;?>"></div>
         </div>
         <div class="two-items">
             <div class="line">
-                <p>* First name:&nbsp</p>
+                <p>* First name:&nbsp;</p>
                 <div class="text-box"><input type="text" name="fName" value="<?php if(isset($fName)) echo $fName; ?>"></div>
             </div>
             <div class="line">
-                <p>* Last name:&nbsp</p>
+                <p>* Last name:&nbsp;</p>
                 <div class="text-box"><input type="text" name="lName" value="<?php if(isset($lName)) echo $lName; ?>"></div>
             </div>
         </div>
         <div class="two-items">
             <div class="line">
-                <p>Start Year:&nbsp</p>
+                <p>Start Year:&nbsp;</p>
                 <div class="text-box"><input type="text" name="startYr" value="<?php if(isset($startYr)) echo $startYr; ?>"></div>
             </div>
             <div class="line">
-                <p>* Grad Year:&nbsp</p>
+                <p>* Grad Year:&nbsp;</p>
                 <div class="text-box"><input type="text" name="gradYr" value="<?php if(isset($gradYr))echo $gradYr; ?>"></div>
             </div>
         </div>
@@ -71,11 +71,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         </div>
         <div id="textboxes" class="two-items" style="display: none">
             <div class="line">
-                <p>Employer:&nbsp</p>
+                <p>Employer:&nbsp;</p>
                 <div class="text-box"><input type="text" name="empl" value="<?php if(isset($empl)) echo $empl; ?>"></div>
             </div>
             <div class="line">
-                <p>Job Title:&nbsp</p>
+                <p>Job Title:&nbsp;</p>
                 <div class="text-box"><input type="text" name="job" value="<?php if(isset($job)) echo $job; ?>"></div>
             </div>
         </div>
@@ -172,8 +172,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minor, Employer, JobTitle, Password) 
             VALUES ('".$fName."', '".$lName."', '".(int) $startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
             $ver = mysqli_query($conn, $sql);
-            header("Location: ../../index.php");
-            echo "test";
+            if(!$ver)
+                die ("The error is: " . mysqli_error($conn));
+            else
+                echo "<script>location.href = '/CPSC351-group1/pages/accounts/Login.php';</script>";
         }
     }
 }
