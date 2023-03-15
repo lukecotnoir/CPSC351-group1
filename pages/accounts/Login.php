@@ -43,11 +43,26 @@ if(isset($_POST['email'], $_POST['pword'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if ($pass !== $row['Password']) {
-            echo "<p>Incorrect password.</p>";
+            echo "<p style='color: red;'>Incorrect password.</p>";
         }
     }
     else {
-        echo "<p>It looks like you don't have an account.</p>";
+        echo "<p style='color: red;'>It looks like you don't have an account.</p>";
+    }
+    if ($email === $row['Email'] and $pass === $row['Password']) {
+        $_SESSION['email'] = $row['Email'];
+        $_SESSION['fName'] = $row['FirstName'];
+        $_SESSION['lName'] = $row['LastName'];
+        $_SESSION['startYr'] = $row['StartYear'];
+        $_SESSION['gradYr'] = $row['GraduationYear'];
+        $_SESSION['accType'] = $row['AccType'];
+        $_SESSION['major'] = $row['Major'];
+        $_SESSION['minor'] = $row['Minor'];
+        $_SESSION['empl'] = $row['Employer'];
+        $_SESSION['jobTitle'] = $row['JobTitle'];
+        $_SESSION['fName'] = $row['FirstName'];
+
+        header("Location: ../../index.php");
     }
 
     $conn->close();

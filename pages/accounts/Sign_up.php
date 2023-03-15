@@ -97,6 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>* Confirm Password:&nbsp</p>
             <div class=text-box><input type="text" name="confirm_pword"></div>
         </div>
+        <div class="line">
+            <p>If account creation is successful, you will be redirected to the login page and prompted to login</p>
+        </div>
         <div class="terms"><p>By creating an account you agree to our <a href="Sign_up.php">terms and conditions</a></p></div>
         <div class=button><input type="submit" name="submit"></div>
 <?php
@@ -163,13 +166,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM Accounts where Email = '".$email."'";
         $result = $conn->query($sql);
         if($result->num_rows > 0){
-            echo "<div class='line'><p>It looks like you already have an account. Go back to the login page to log in</p></div>";
+            echo "<div class='line'><p style='color: red'>It looks like you already have an account. Go back to the login page to log in</p></div>";
         }
         else {
             $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minor, Employer, JobTitle, Password) 
             VALUES ('".$fName."', '".$lName."', '".(int) $startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
-            $conn->query($sql);
-            echo "<div class='line'><p>Success!</p></div>";
+            $ver = mysqli_query($conn, $sql);
+            header("Location: ../../index.php");
+            echo "test";
         }
     }
 }

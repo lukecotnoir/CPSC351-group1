@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +21,6 @@
             <a href="/CPSC351-GROUP1/pages/event_board/Event_board.php">Event Board</a>
             <a href="/CPSC351-GROUP1/pages/communities/Communities.php">Communities</a>
             <a href="#">Messages</a>
-            <a href="/CPSC351-GROUP1/pages/accounts/Login.php">Login</a>
+            <a <?php if(isset($_SESSION['email'])) echo "href='/CPSC351-GROUP1/pages/accounts/Account.php'>Account"; else echo "href='/CPSC351-GROUP1/pages/accounts/Login.php'>Login";?></a>
         </div>
     </div>

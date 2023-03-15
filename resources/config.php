@@ -4,5 +4,5 @@
     defined("TEMPLATES_PATH")
         or define("TEMPLATES_PATH", realpath(dirname(__FILE__) . '/templates'));
     defined("CONNECTION_PATH")
-        or define("CONNECTION_PATH", realpath(dirname(__FILE__) . '/connection.php'));
+        or define("CONNECTION_PATH", realpath(dirname(__FILE__) . '/connection.php'));  
 ?>
