@@ -175,7 +175,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if(!$ver)
                 die ("The error is: " . mysqli_error($conn));
             else
-                echo "<script>location.href = '/CPSC351-group1/pages/accounts/Login.php';</script>";
+                echo "
+                    <script>
+                        location.href = '/CPSC351-group1/pages/accounts/Login.php';
+                    </script>";
         }
     }
 }
