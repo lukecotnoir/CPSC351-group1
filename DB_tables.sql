@@ -122,14 +122,11 @@ CREATE TABLE IF NOT EXISTS `Job Post` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Report_System` (
   `RepSys_ID` INT NOT NULL AUTO_INCREMENT,
-  `Account_UserID_Reporter` INT NOT NULL,
+  `ReporterEmail` VARCHAR(250) NOT NULL,
   `DropType` VARCHAR(45) NOT NULL,
   `Details` VARCHAR(250) NULL,
-  PRIMARY KEY (`RepSys_ID`, `Account_UserID_Reporter`),
-  	FOREIGN KEY (`Account_UserID_Reporter`)
-    REFERENCES `Accounts` (`UserID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  `Status` VARCHAR(45) NOT NULL, 
+  PRIMARY KEY (`RepSys_ID`, `ReporterEmail`));
 
 
 -- -----------------------------------------------------
@@ -139,20 +136,20 @@ CREATE TABLE IF NOT EXISTS `Report_Other` (
   `RepOth_ID` INT NOT NULL AUTO_INCREMENT,
   `DropType` VARCHAR(45) NOT NULL,
   `OtherDetail` VARCHAR(250) NULL,
-  `ReporterID` INT NOT NULL,
+  `ReporterEmail` INT NOT NULL,
   `Rep_Acc_ID` INT NULL,
   `Rep_Comm_ID` INT NULL,
   `Rep_Mess_ID` INT NULL,
   `Rep_Post_ID` INT NULL,
   `Reason` VARCHAR(250) NULL,
-  PRIMARY KEY (`RepOth_ID`, `ReporterID`),
-    FOREIGN KEY (`ReporterID`)
-    REFERENCES `Accounts` (`UserID`)
+  PRIMARY KEY (`RepOth_ID`),
+    FOREIGN KEY (`ReporterEmail`)
+    REFERENCES `Accounts` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   
     FOREIGN KEY (`Rep_Acc_ID`)
-    REFERENCES `Accounts` (`UserID`)
+    REFERENCES `Accounts` (`Email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   

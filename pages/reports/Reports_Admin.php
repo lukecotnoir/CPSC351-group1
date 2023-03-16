@@ -1,0 +1,105 @@
+<?php
+    include_once(realpath("../../resources/config.php"));
+    include_once(realpath(TEMPLATES_PATH . "/header.php"));
+    if ($_SERVER["REQUEST_METHOD"]=="POST"){
+        $type         = $_POST['report_type'];
+        $status         = $_POST['report_status'];
+    }
+?>
+<link href="../../public_html/css/report-page.css" rel="stylesheet">
+<form action="Reports_Admin.php" method="post">
+<div class = 'title'>Reports Page</div>
+ <div class="report-form">
+ <hr style="width: 75%">
+    <div class = "two-items" >       
+        <div class="line">
+            <div class="select">
+                <div class="searchtype">
+                    <input type="radio" id="system" name="report_type" value="System">
+                    <label for="system">System</label>
+                </div>
+                <div class="searchtype">
+                    <input type="radio" id="other" name="report_type" value="Other">
+                    <label for="other">Problem</label>
+                </div>
+           </div>
+        </div>
+        
+        <div class="line">
+            <div class="select">
+                <div class="searchtype">
+                    <input type="radio" id="finished" name="report_status" value="Completed">
+                    <label for="finished">Completed</label>
+                </div>
+                <div class="searchtype">
+                    <input type="radio" id="current" name="report_status" value="In Progress">
+                    <label for="current">In Progress </label>
+                </div>
+           </div>
+        </div>
+    </div>
+        <div class="button">
+            <input type="submit" name="submit">
+        </div>
+        
+    </form>
+</div>
+
+<?php
+    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
+?>
+<?php
+include_once(realpath(CONNECTION_PATH));
+include_once(realpath(TEMPLATES_PATH . "/header.php"));
+$type = $_POST['report_type'];
+$status = $_POST['report_status'];
+if ($type =="System" )
+{   
+    echo "$type Reports";
+    $sql_find =  "SELECT * FROM report_system WHERE Status LIKE '$status'";                                                
+    $result = $conn->query($sql_find);
+    if ($result->num_rows >0)
+    {
+        echo "<br>Here are the $type Reports with Status:$status<br>";
+        echo 'RepSys_ID||Reporter_Email||DropType||Details||Status||<br>';
+        while($row = $result->fetch_assoc())
+        {   echo $row['RepSys_ID'];echo "||";echo $row['ReporterEmail'];echo "||";echo $row['DropType'];
+            echo "||";echo $row['Details'];echo'||';echo $row['Status'];echo'||';
+            echo '<br> <br>';
+        } 
+    }
+	else {
+		echo "<br>There are no filed reports with those requirements";
+	}
+}
+if ($type == "Other")
+{
+    echo "$type Reports";
+
+    $sql_find =  "SELECT * FROM report_other WHERE Status LIKE '$status' ";
+                                               
+    $result = $conn->query($sql_find);
+    if ($result->num_rows >0)
+    {
+        echo "<br>Here are the results of your search:<br>";
+        echo 'RepOth_ID||DropType||OtherDetail||ReporterEmail|| || <br>';
+            
+        while($row = $result->fetch_assoc())
+        {   echo $row['RepOth_ID'];echo "||";echo $row['DropType'];echo "||";echo $row['OtherDetail'];
+            echo "||";echo $row['ReporterID'];echo'||';echo $row['  '];echo'||';
+            echo $row['  '];
+        }  
+    }
+	else {
+		echo "<br>There are no results for your search ";
+	}
+}
+
+/*For Changing a report
+Not sure how to remove a post but changing status to complete
+After selecting the report they want to change, store the Rep_ID to a local? variable and use it
+in the where statement. 
+$sql_status_change = "UPDATE report_system SET Status = 'Complete' WHERE RepSys_ID = $working_Rep_ID";
+
+*/
+?>

@@ -26,8 +26,8 @@
                     <div class="text-box"><input type ='text', name='rep_ID'></div>
                 </div>
                 <div class="line">
-                    <p>Your ID*:</p>
-                    <div class="text-box"><input type = "text" name = "reporterID"></div>
+                    <p>Your Email*:</p>
+                    <div class="text-box">&nbsp;<?php echo $_SESSION['email'];?></p></div>
                 </div>
                 <div class="line">
                     <p>Please explain your reason for reporting:</p>
@@ -46,10 +46,10 @@ include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));    
 
 
-if(isset($_POST['dropdown'],$_POST['reporterID']))
+if(isset($_POST['dropdown'],$_SESSION['email']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporter_ID = $_POST['reporterID'];
+    $reporter_ID = $_SESSION['email'];
 
 
     if(isset($_POST["otherdetail"]))

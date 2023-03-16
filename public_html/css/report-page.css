@@ -15,19 +15,51 @@ form {
     font-size: 18px;
     color: var(--text-primary);
 }
-.report-form, .details{
+.report-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-around;
+    border-style: solid;
+    background-color: var(--bg-dark);
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+    border-radius: 5px;
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    max-width: 550px;
+    margin: auto;
+    margin-top: 15px;
+    padding: 15px 15px;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+.line, .two-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+.title {
+    font-size: 24px;
+}
+
+.select{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.line {
+
+
+.line, .two-items, .acctype {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-evenly;
+    width: 80%;
 }
-.title {
-    font-size: 24px;
+
+.two-items input {
+    width: 100px;
 }
