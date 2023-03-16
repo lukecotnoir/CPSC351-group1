@@ -50,17 +50,16 @@ if(isset($_POST['email'], $_POST['pword'])) {
         echo "<p style='color: red;'>It looks like you don't have an account.</p>";
     }
     if ($email === $row['Email'] and $pass === $row['Password']) {
-        $_SESSION['email'] = $row['Email'];
-        $_SESSION['fName'] = $row['FirstName'];
-        $_SESSION['lName'] = $row['LastName'];
-        $_SESSION['startYr'] = $row['StartYear'];
-        $_SESSION['gradYr'] = $row['GraduationYear'];
-        $_SESSION['accType'] = $row['AccType'];
-        $_SESSION['major'] = $row['Major'];
-        $_SESSION['minor'] = $row['Minor'];
-        $_SESSION['empl'] = $row['Employer'];
+        $_SESSION['email']    = $row['Email'];
+        $_SESSION['fName']    = $row['FirstName'];
+        $_SESSION['lName']    = $row['LastName'];
+        $_SESSION['startYr']  = $row['StartYear'];
+        $_SESSION['gradYr']   = $row['GraduationYear'];
+        $_SESSION['accType']  = $row['Acctype'];
+        $_SESSION['major']    = $row['Major'];
+        $_SESSION['minor']    = $row['Minor'];
+        $_SESSION['empl']     = $row['Employer'];
         $_SESSION['jobTitle'] = $row['JobTitle'];
-        $_SESSION['fName'] = $row['FirstName'];
 
         header("Location: ../../index.php");
     }

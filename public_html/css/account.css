@@ -8,7 +8,7 @@ body {
     border-color: var(--bg-blue-primary);
     border-radius: 5px;
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
-    max-width: 550px;
+    max-width: 500px;
     margin: auto;
     margin-top: 15px;
     display: flex;
@@ -29,5 +29,5 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 80%;
+    width: 70%;
 }
