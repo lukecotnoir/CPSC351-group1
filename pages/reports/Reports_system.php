@@ -25,7 +25,7 @@
             <div class="details">
                 <div class="line">
                     <p>Your ID*:</p>
-                    <div class="text-box"><input type = "text" name = "reporterID"></div>
+                    <div class="text-box">&nbsp;<?php echo $_SESSION['email'];?></div>
                 </div>
                 <div class="line">
                     <p>Please provide extra details (If the item has an ID, please provide):&nbsp</p>
@@ -44,10 +44,10 @@ include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));    
 
 
-if(isset($_POST['dropdown'],$_POST['reporterID']))
+if(isset($_POST['dropdown'],$_SESSION['email']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporterID = $_POST['reporterID'];
+    $reporteremail = $_SESSION['email'];
     
     if(isset($_POST["reportdescribe"]))
     {$details = $_POST["reportdescribe"];}
@@ -56,8 +56,8 @@ if(isset($_POST['dropdown'],$_POST['reporterID']))
 
     
 
-    $sql_insert = "INSERT INTO report_system(Account_UserID_Reporter, DropType, Details) 
-                    VALUES ('$reporterID','$reporttype', '$details')";
+    $sql_insert = "INSERT INTO report_system(ReporterEmail, DropType, Details, Status) 
+                    VALUES ('$reporteremail','$reporttype', '$details', 'In Progress')";
 
     if ($conn->query($sql_insert) === TRUE)
     {
