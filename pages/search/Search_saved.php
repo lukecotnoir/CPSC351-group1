@@ -53,16 +53,30 @@ if ($choice =="Account" )
     if ($result->num_rows >0)
     {
         echo "<br>Here are the results of your search:<br>";
-        echo 'UserID||FirstName||LastName||StartYear||GraduationYear||Email||
-            Acctype||Major||Minor||Employer||JobTitle<br>';
-        while($row = $result->fetch_assoc())
-        {   echo $row['UserID'];echo "||";echo $row['FirstName'];echo "||";echo $row['LastName'];
-            echo "||";echo $row['StartYear'];echo'||';echo $row['GraduationYear'];echo'||';
-            echo $row['Email'];echo'||'; echo $row['Acctype'];echo"||"; echo $row['Major'];
-            echo "||";echo $row['Minor']; echo '||';echo $row['Employer'];echo'||';echo $row['JobTitle'];
-            echo '<br> <br>';
-        }
+        echo "<table border='1'>
+        <tr>
+        <th>UserID</th><th>FirstName</th><th>LastName</th><th>StartYear</th>
+        <th>GraduationYear</th><th>Email</th><th>Acctype</th><th>Major</th>
+        <th>Minor</th><th>Employer</th><th>JobTitle</th>
+        </tr>
+        ";
         
+        while($row = $result->fetch_assoc())
+        {   echo "<tr>
+                    <td>{$row['UserID']}</td>
+                    <td>{$row['FirstName']}</td>
+                    <td>{$row['LastName']}</td>
+                    <td>{$row['StartYear']}</td>
+                    <td>{$row['GraduationYear']}</td>
+                    <td>{$row['Email']}</td>
+                    <td>{$row['Acctype']}</td>
+                    <td>{$row['Major']}</td>
+                    <td>{$row['Minor']}</td>
+                    <td>{$row['Employer']}</td>
+                    <td>{$row['JobTitle']}</td>
+            </tr>";
+        }
+        echo "</table>";
     }
 	else {
 		echo "<br>There are no results for your search";
@@ -80,13 +94,23 @@ if ($choice == "Community")
     if ($result->num_rows >0)
     {
         echo "<br>Here are the results of your search:<br>";
-        echo 'CommID||CommName||PCSEAffiliate||YearCreated||MemberCount||PostCount<br>';
-            
+        echo "<table border='1'>
+        <tr>
+        <th>CommID</th><th>CommName</th><th>PCSEAffiliate</th>
+        <th>YearCreated</th><th>MemberCount</th><th>PostCount</th>
+        </tr>
+        ";
         while($row = $result->fetch_assoc())
-        {   echo $row['CommID'];echo "||";echo $row['CommName'];echo "||";echo $row['PCSEAffiliate'];
-            echo "||";echo $row['YearCreated'];echo'||';echo $row['MemberCount'];echo'||';
-            echo $row['PostCount'];
-        }  
+        {   echo "<tr>
+                    <td>{$row['CommID']}</td>
+                    <td>{$row['CommName']}</td>
+                    <td>{$row['PCSEAffiliate']}</td>
+                    <td>{$row['YearCreated']}</td>
+                    <td>{$row['MemberCount']}</td>
+                    <td>{$row['PostCount']}</td>
+            </tr>";
+        }
+        echo "</table>"; 
     }
 	else {
 		echo "<br>There are no results for your search ";

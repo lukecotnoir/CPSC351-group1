@@ -10,7 +10,6 @@
 <form action="Reports_Admin.php" method="post">
 <div class = 'title'>Reports Page</div>
  <div class="report-form">
- <hr style="width: 75%">
     <div class = "two-items" >       
         <div class="line">
             <div class="select">
@@ -61,16 +60,26 @@ if ($type =="System" )
     if ($result->num_rows >0)
     {
         echo "<br>Here are the $type Reports with Status:$status<br>";
-        echo 'RepSys_ID||Reporter_Email||DropType||Details||Status||<br>';
+        echo "<table border='1'>
+        <tr>
+        <th>RepSys_ID</th><th>Reporter_Email</th><th>DropType</th><th>Details</th><th>Status</th>
+        </tr>
+        ";
         while($row = $result->fetch_assoc())
-        {   echo $row['RepSys_ID'];echo "||";echo $row['ReporterEmail'];echo "||";echo $row['DropType'];
-            echo "||";echo $row['Details'];echo'||';echo $row['Status'];echo'||';
-            echo '<br> <br>';
+        {   echo "<tr>
+                    <td>{$row['RepSys_ID']}</td>
+                    <td>{$row['ReporterEmail']}</td>
+                    <td>{$row['DropType']}</td>
+                    <td>{$row['Details']}</td>
+                    <td>{$row['Status']}</td>
+                  </tr> ";
         } 
+        echo "</table>";
     }
 	else {
 		echo "<br>There are no filed reports with those requirements";
 	}
+    
 }
 if ($type == "Other")
 {
@@ -80,15 +89,23 @@ if ($type == "Other")
                                                
     $result = $conn->query($sql_find);
     if ($result->num_rows >0)
-    {
-        echo "<br>Here are the results of your search:<br>";
-        echo 'RepOth_ID||DropType||OtherDetail||ReporterEmail|| || <br>';
+    {   
+        echo "<br>Here are the $type Reports with Status:$status<br>";
+        echo "<table border='1'><tr>
+        <th>RepOth_ID</th><th>ReporterEmail</th><th>DropType</th><th>Detail</th><th>Status</th>
+        </tr>";
             
         while($row = $result->fetch_assoc())
-        {   echo $row['RepOth_ID'];echo "||";echo $row['DropType'];echo "||";echo $row['OtherDetail'];
-            echo "||";echo $row['ReporterID'];echo'||';echo $row['  '];echo'||';
-            echo $row['  '];
+        {   echo "<tr>
+            <td>{$row['RepOth_ID']}</td>
+            <td>{$row['ReporterEmail']}</td>
+            <td>{$row['DropType']}</td>
+            <td>{$row['Detail']}</td>
+            <td>{$row['Status']}</td>
+            </tr>";
+
         }  
+        echo "</table>";
     }
 	else {
 		echo "<br>There are no results for your search ";

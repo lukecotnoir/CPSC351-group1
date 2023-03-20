@@ -130,39 +130,35 @@ CREATE TABLE IF NOT EXISTS `Report_System` (
 
 
 -- -----------------------------------------------------
--- Table `Report_Other`
+-- Table `mydb`.`Report_Other`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Report_Other` (
-  `RepOth_ID` INT NOT NULL AUTO_INCREMENT,
+  `RepOth_ID` INT NOT NULL,
+  `ReporterEmail` VARCHAR(250) NOT NULL,
   `DropType` VARCHAR(45) NOT NULL,
-  `OtherDetail` VARCHAR(250) NULL,
-  `ReporterEmail` INT NOT NULL,
+  `Detail` VARCHAR(250) NULL,
   `Rep_Acc_ID` INT NULL,
   `Rep_Comm_ID` INT NULL,
   `Rep_Mess_ID` INT NULL,
   `Rep_Post_ID` INT NULL,
   `Reason` VARCHAR(250) NULL,
+  `Status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`RepOth_ID`),
-    FOREIGN KEY (`ReporterEmail`)
-    REFERENCES `Accounts` (`Email`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  
     FOREIGN KEY (`Rep_Acc_ID`)
-    REFERENCES `Accounts` (`Email`)
+    REFERENCES `Accounts` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  
+  CONSTRAINT `Rep_Comm_ID`
     FOREIGN KEY (`Rep_Comm_ID`)
     REFERENCES `Community` (`CommID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  
+  CONSTRAINT `Rep_Mess_ID`
     FOREIGN KEY (`Rep_Mess_ID`)
     REFERENCES `Message` (`Accounts_UserID_Sender`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-
+  CONSTRAINT `Rep_Post_ID`
     FOREIGN KEY (`Rep_Post_ID`)
     REFERENCES `Post` (`PostID`)
     ON DELETE NO ACTION
