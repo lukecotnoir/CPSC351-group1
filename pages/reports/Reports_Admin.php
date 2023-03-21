@@ -5,6 +5,9 @@
         $type         = $_POST['report_type'];
         $status         = $_POST['report_status'];
     }
+    if($_SESSION['accType'] != "Admin") {
+        header("location:/CPSC351-group1/index.php");
+    }
 ?>
 <link href="../../public_html/css/report-page.css" rel="stylesheet">
 <form action="Reports_Admin.php" method="post">
@@ -45,11 +48,7 @@
 </div>
 
 <?php
-    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-?>
-<?php
 include_once(realpath(CONNECTION_PATH));
-include_once(realpath(TEMPLATES_PATH . "/header.php"));
 $type = $_POST['report_type'];
 $status = $_POST['report_status'];
 if ($type =="System" )
@@ -119,4 +118,5 @@ in the where statement.
 $sql_status_change = "UPDATE report_system SET Status = 'Complete' WHERE RepSys_ID = $working_Rep_ID";
 
 */
+include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
