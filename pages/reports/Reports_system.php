@@ -5,7 +5,6 @@
 <link href="/CPSC351-GROUP1/public_html/css/report-page.css" rel="stylesheet">
 <body>
     <form action="Reports_system.php" method="post">
-        <div class="report-form">
             <div class="title"><p>Report A Problem</p></div>
             <p>*: required</p>
             <div class="type">
@@ -25,7 +24,10 @@
             <div class="details">
                 <div class="line">
                     <p>Your ID*:</p>
-                    <div class="text-box">&nbsp;<?php echo $_SESSION['email'];?></div>
+                    <p>
+                        <?php if(isset($_SESSION['email'])) echo $_SESSION['email']; 
+                              else echo "Sign in to make a report.";?>
+                    </p>
                 </div>
                 <div class="line">
                     <p>Please provide extra details (If the item has an ID, please provide):&nbsp</p>
@@ -33,7 +35,6 @@
                 </div>
                 <div class="button"><input type="submit" name="submit"></div>
             </div>
-        </div>
     </form>
 
 <?php
