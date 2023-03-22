@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `Report_System` (
   `RepSys_ID` INT NOT NULL AUTO_INCREMENT,
   `ReporterEmail` VARCHAR(250) NOT NULL,
   `DropType` VARCHAR(45) NOT NULL,
-  `Details` VARCHAR(250) NULL,
+  `Detail` VARCHAR(250) NULL,
   `Status` VARCHAR(45) NOT NULL, 
   PRIMARY KEY (`RepSys_ID`, `ReporterEmail`));
 

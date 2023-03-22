@@ -17,7 +17,7 @@
         <div class="line">
             <div class="select">
                 <div class="searchtype">
-                    <input type="radio" id="system" name="report_type" value="System">
+                    <input type="radio" id="system" name="report_type" value="System" checked="checked">
                     <label for="system">System</label>
                 </div>
                 <div class="searchtype">
@@ -34,7 +34,7 @@
                     <label for="finished">Completed</label>
                 </div>
                 <div class="searchtype">
-                    <input type="radio" id="current" name="report_status" value="In Progress">
+                    <input type="radio" id="current" name="report_status" value="In Progress" checked="checked">
                     <label for="current">In Progress </label>
                 </div>
            </div>
@@ -88,12 +88,10 @@ if ($type == "Other")
                                                
     $result = $conn->query($sql_find);
     if ($result->num_rows >0)
-    {   
-        echo "<br>Here are the $type Reports with Status:$status<br>";
+    {   echo "<br>Here are the $type Reports with Status:$status<br>";
         echo "<table border='1'><tr>
         <th>RepOth_ID</th><th>ReporterEmail</th><th>DropType</th><th>Detail</th><th>Status</th>
         </tr>";
-            
         while($row = $result->fetch_assoc())
         {   echo "<tr>
             <td>{$row['RepOth_ID']}</td>
@@ -105,6 +103,20 @@ if ($type == "Other")
 
         }  
         echo "</table>";
+        if ($email === $row['Email'] and $pass === $row['Password']) {
+            #want the ID in the table of reports to be clickable and then set these variables
+            $_SESSION['RepOth_ID']    = $row['RepOth_ID'];
+            $_SESSION['ReporterEmail']    = $row['ReporterEmail'];
+            $_SESSION['DropType']    = $row['DropType'];
+            $_SESSION['Detail']  = $row['Detail'];
+            $_SESSION['Rep_Acc_ID']   = $row['Rep_Comm_ID'];
+            $_SESSION['Rep_Mess_ID']  = $row['Rep_Mess_ID'];
+            $_SESSION['Rep_Post_ID']    = $row['Rep_Post_ID'];
+            $_SESSION['Reason']    = $row['Reason'];
+            $_SESSION['Status']     = $row['Status'];
+
+    header("Location: ../../index.php");
+}
     }
 	else {
 		echo "<br>There are no results for your search ";
@@ -118,5 +130,17 @@ in the where statement.
 $sql_status_change = "UPDATE report_system SET Status = 'Complete' WHERE RepSys_ID = $working_Rep_ID";
 
 */
+
+if ($email === $row['Email'] and $pass === $row['Password']) {
+    $_SESSION['RepSys_ID']    = $row['RepSys_ID'];
+    $_SESSION['ReporterEmail']    = $row['ReporterEmail'];
+    $_SESSION['DropType']    = $row['DropType'];
+    $_SESSION['Detail']  = $row['Detail'];
+    $_SESSION['Status']     = $row['Status'];
+
+    header("Location: ../../index.php");
+}
+
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
+
 ?>
