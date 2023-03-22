@@ -1,7 +1,13 @@
 <?php
     include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
-    
+    if ($_SERVER["REQUEST_METHOD"]=="POST"){
+        $type         = $_POST['report_type'];
+        $status         = $_POST['report_status'];
+    }
+    if($_SESSION['accType'] != "Admin") {
+        header("location:/CPSC351-group1/index.php");
+    }
 ?>
 <link href="../../public_html/css/report-page.css" rel="stylesheet">
 <form action="Reports_Admin.php" method="post">
@@ -42,16 +48,9 @@
 </div>
 
 <?php
-    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-?>
-<?php
 include_once(realpath(CONNECTION_PATH));
-include_once(realpath(TEMPLATES_PATH . "/header.php"));
-if ($_SERVER["REQUEST_METHOD"]=="POST"){
-    $type= $_POST['report_type'];
-    $status= $_POST['report_status'];
-}
-
+$type = $_POST['report_type'];
+$status = $_POST['report_status'];
 if ($type =="System" )
 {   
     echo "$type Reports";
@@ -132,8 +131,6 @@ $sql_status_change = "UPDATE report_system SET Status = 'Complete' WHERE RepSys_
 
 */
 
-
-
 if ($email === $row['Email'] and $pass === $row['Password']) {
     $_SESSION['RepSys_ID']    = $row['RepSys_ID'];
     $_SESSION['ReporterEmail']    = $row['ReporterEmail'];
@@ -144,5 +141,6 @@ if ($email === $row['Email'] and $pass === $row['Password']) {
     header("Location: ../../index.php");
 }
 
+include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 
 ?>
