@@ -66,12 +66,12 @@ if ($type =="System" )
         ";
         while($row = $result->fetch_assoc())
         {   echo "<tr>
-                    <td>{$row['RepSys_ID']}</td>
-                    <td>{$row['ReporterEmail']}</td>
-                    <td>{$row['DropType']}</td>
-                    <td>{$row['Details']}</td>
-                    <td>{$row['Status']}</td>
-                  </tr> ";
+            <td><a href=\"Reports_view.php?RepSys_ID={$row['RepSys_ID']}\">{$row['RepSys_ID']}</a></td>
+            <td>{$row['ReporterEmail']}</td>
+            <td>{$row['DropType']}</td>
+            <td>{$row['Details']}</td>
+            <td>{$row['Status']}</td>
+            </tr> ";
         } 
         echo "</table>";
     }
@@ -94,7 +94,7 @@ if ($type == "Other")
         </tr>";
         while($row = $result->fetch_assoc())
         {   echo "<tr>
-            <td>{$row['RepOth_ID']}</td>
+            <td><a href=\"Reports_view.php?RepOth_ID={$row['RepOth_ID']}\">{$row['RepOth_ID']}</a></td>
             <td>{$row['ReporterEmail']}</td>
             <td>{$row['DropType']}</td>
             <td>{$row['Detail']}</td>
@@ -103,20 +103,7 @@ if ($type == "Other")
 
         }  
         echo "</table>";
-        if ($email === $row['Email'] and $pass === $row['Password']) {
-            #want the ID in the table of reports to be clickable and then set these variables
-            $_SESSION['RepOth_ID']    = $row['RepOth_ID'];
-            $_SESSION['ReporterEmail']    = $row['ReporterEmail'];
-            $_SESSION['DropType']    = $row['DropType'];
-            $_SESSION['Detail']  = $row['Detail'];
-            $_SESSION['Rep_Acc_ID']   = $row['Rep_Comm_ID'];
-            $_SESSION['Rep_Mess_ID']  = $row['Rep_Mess_ID'];
-            $_SESSION['Rep_Post_ID']    = $row['Rep_Post_ID'];
-            $_SESSION['Reason']    = $row['Reason'];
-            $_SESSION['Status']     = $row['Status'];
-
-    header("Location: ../../index.php");
-}
+        
     }
 	else {
 		echo "<br>There are no results for your search ";
@@ -130,17 +117,6 @@ in the where statement.
 $sql_status_change = "UPDATE report_system SET Status = 'Complete' WHERE RepSys_ID = $working_Rep_ID";
 
 */
-
-if ($email === $row['Email'] and $pass === $row['Password']) {
-    $_SESSION['RepSys_ID']    = $row['RepSys_ID'];
-    $_SESSION['ReporterEmail']    = $row['ReporterEmail'];
-    $_SESSION['DropType']    = $row['DropType'];
-    $_SESSION['Detail']  = $row['Detail'];
-    $_SESSION['Status']     = $row['Status'];
-
-    header("Location: ../../index.php");
-}
-
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 
 ?>

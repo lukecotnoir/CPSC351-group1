@@ -57,7 +57,7 @@ if(isset($_POST['dropdown'],$_SESSION['email']))
 
     
 
-    $sql_insert = "INSERT INTO report_system(ReporterEmail, DropType, Details, Status) 
+    $sql_insert = "INSERT INTO report_system(ReporterEmail, DropType, Detail, Status) 
                     VALUES ('$reporteremail','$reporttype', '$details', 'In Progress')";
 
     if ($conn->query($sql_insert) === TRUE)
