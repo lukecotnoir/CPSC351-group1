@@ -1,42 +1,46 @@
 <?php
     include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
+    if(!isset($_SESSION['email'])) {
+        header("location:/CPSC351-group1/index.php");
+    }
 ?>
 <link href="/CPSC351-GROUP1/public_html/css/report-page.css" rel="stylesheet">
 <body>
+<div class='report-form'>
     <form action="Reports_other.php" method="post">
-            <div class="title"><p>Report something/someone</p></div>
-            <p>*: required</p>
-            <div class="type">
-                What are you reporting*?:
-                <select name = "dropdown">
-                    <option value = "Account" selected>Account</option>
-                    <option value = "Post">Post</option>
-                    <option value = "Community">Community</option>
-                </select>
+        <div class="title"><p>Report something/someone</p></div>
+        <hr style="width: 75%">
+        <div class='line' style="font-size: 20px; color: red;"><p><?php if(!isset($_SESSION['email'])) echo "Sign in to make a report.";?></p></div>
+        <div class="type">
+            What are you reporting?:
+            <select name = "dropdown">
+                <option value = "Account" selected>Account</option>
+                <option value = "Post">Post</option>
+                <option value = "Community">Community</option>
+            </select>
+        </div>
+        <div class="details">
+            <div class="line">
+                <label for="otherdetail">Please provide extra details:</label>
             </div>
-            <div class="details">
-                <div class="line">
-                    <p>Please provide extra details:&nbsp</p>
-                    <div class="text-box"><input type ='text', name='otherdetail'></div>
-                </div>
-                <div class="line">
-                    <p>Email or ID of who or what you are reporting:&nbsp</p>
-                    <div class="text-box"><input type ='text', name='rep_ID'></div>
-                </div>
-                <div class="line">
-                    <p>Your Email*:</p>
-                    <p><?php if(isset($_SESSION['email'])) echo $_SESSION['email']; 
-                              else echo "Sign in to make a report.";?>
-                    </p>
-                </div>
-                <div class="line">
-                    <p>Please explain your reason for reporting:</p>
-                    <div class="text-box"><input type = "text" name = "reason"></div>
-                </div>
-                <div class="button"><input type="submit" name="submit"></div>
+            <div class='line'>
+                <textarea id='otherdetail' name='otherdetail' rows="3" cols="40">Enter details here.</textarea>
             </div>
+            <div class="line">
+                <p>Email of who or what you are reporting:</p>
+                <div class="text-box"><input type ='text', name='rep_ID'></div>
+            </div>
+            <div class="line">
+                <label for="reason">Please explain your reason for reporting:</label>
+            </div>
+            <div class='line'>
+                <textarea id='reason' name='reason' rows="3" cols="40">Enter details here.</textarea>
+            </div>
+            <div class="button"><input type="submit" name="submit"></div>
+        </div>
     </form>
+</div>
 
 <?php
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));

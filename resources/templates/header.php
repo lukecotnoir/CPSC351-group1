@@ -22,9 +22,14 @@
                     echo "<a href = '/CPSC351-GROUP1/pages/reports/Reports_Admin.php'>Admin</a>";
             ?>
             <a href="/CPSC351-GROUP1/pages/search/Search_saved.php">Search</a>
-            <a href="/CPSC351-GROUP1/pages/event_board/Event_board.php">Event Board</a>
-            <a href="/CPSC351-GROUP1/pages/communities/Communities.php">Communities</a>
-            <a href="#">Messages</a>
+            <?php
+                if(isset($_SESSION['email'])) {
+                    echo "<a href='/CPSC351-GROUP1/pages/event_board/Event_board.php'>Event Board</a>";
+                    echo "<a href='/CPSC351-GROUP1/pages/communities/Communities.php'>Communities</a>";
+                    echo "<a href='#'>Messages</a>";
+                
+                }
+            ?>
             <a <?php if(isset($_SESSION['email'])) echo "href='/CPSC351-GROUP1/pages/accounts/Account.php'>Account"; else echo "href='/CPSC351-GROUP1/pages/accounts/Login.php'>Login";?></a>
         </div>
     </div>
