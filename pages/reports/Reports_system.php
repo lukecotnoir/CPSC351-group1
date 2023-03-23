@@ -27,7 +27,7 @@
         </div>
         <div class="details">
             <div class="line">
-                <label for='reportdescribe' style="font-size: 18px; color: red;"><?php if(isset($_SESSION['email'])) echo "Please provide extra details (If the item has an ID, please provide):"; 
+                <label for='reportdescribe' style="font-size: 18px;"><?php if(isset($_SESSION['email'])) echo "Please provide extra details (If the item has an ID, please provide):"; 
                           else echo "Sign in to make a report.";?></label>
             </div>
             <div class='line'>
@@ -35,11 +35,6 @@
             </div>
             <div class="button"><input type="submit" name="submit"></div>
         </div>
-    </form>
-</div>
-<?php
-    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-?>
 <?php
 include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));    
@@ -57,7 +52,7 @@ if(isset($_POST['dropdown'],$_SESSION['email']))
 
     
 
-    $sql_insert = "INSERT INTO report_system(ReporterEmail, DropType, Details, Status) 
+    $sql_insert = "INSERT INTO report_system(ReporterEmail, DropType, Detail, Status) 
                     VALUES ('$reporteremail','$reporttype', '$details', 'In Progress')";
 
     if ($conn->query($sql_insert) === TRUE)
@@ -73,4 +68,9 @@ else
 {
     echo "<br>Please fill out all required information before submitting.";
 }
+?>
+</form>
+</div>
+<?php
+    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>

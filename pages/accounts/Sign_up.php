@@ -169,8 +169,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<div class='line'><p style='color: red'>It looks like you already have an account. Go back to the login page to log in</p></div>";
         }
         else {
+            $pword_crypt = password_hash($_POST['pword'], PASSWORD_DEFAULT);
             $sql = "INSERT INTO Accounts (FirstName, LastName, StartYear, GraduationYear, Email, Acctype, Major, Minor, Employer, JobTitle, Password) 
-            VALUES ('".$fName."', '".$lName."', '".(int) $startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword."')";
+            VALUES ('".$fName."', '".$lName."', '".(int) $startYr."', '".$gradYr."', '".$email."', '".$acctype."', '".$major."', '".$minor."', '".$empl."', '".$job."', '".$pword_crypt."')";
             $ver = mysqli_query($conn, $sql);
             if(!$ver)
                 die ("The error is: " . mysqli_error($conn));

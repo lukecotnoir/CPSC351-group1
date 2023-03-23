@@ -42,14 +42,15 @@ if(isset($_POST['email'], $_POST['pword'])) {
     //db execute query
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if ($pass !== $row['Password']) {
+        $verify = password_verify($pass, $row['Password']);
+        if (!$verify) {
             echo "<p style='color: red;'>Incorrect password.</p>";
         }
     }
     else {
         echo "<p style='color: red;'>It looks like you don't have an account.</p>";
     }
-    if ($email === $row['Email'] and $pass === $row['Password']) {
+    if ($email === $row['Email'] and $verify) {
         $_SESSION['email']    = $row['Email'];
         $_SESSION['fName']    = $row['FirstName'];
         $_SESSION['lName']    = $row['LastName'];

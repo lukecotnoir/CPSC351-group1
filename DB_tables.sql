@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `Accounts` (
   `Minor` VARCHAR(45) NULL,
   `Employer` VARCHAR(45) NULL,
   `JobTitle` VARCHAR(45) NULL,
-  `Password` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`UserID`));
 
 
