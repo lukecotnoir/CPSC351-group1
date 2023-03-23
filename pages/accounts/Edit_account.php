@@ -16,7 +16,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
          $job      = NULL;
     }   
 }
-
+if(!isset($_SESSION['email'])) {
+    header("location:/CPSC351-group1/index.php");
+}
 ?>
 <link href="../../public_html/css/sign_up-styling.css" rel="stylesheet">
 <div class=login-form>

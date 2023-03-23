@@ -1,9 +1,12 @@
 <?php
     include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
-      $choice = $_POST['comm_type'];
-      $CommName = $_POST['PCSEAffiliate'];
-      $Reason = $_POST['Reason'];
+    $choice = $_POST['comm_type'];
+    $CommName = $_POST['PCSEAffiliate'];
+    $Reason = $_POST['Reason'];
+    if(!isset($_SESSION['email'])) {
+      header("location:/CPSC351-group1/index.php");
+    }
 ?>
 
 <link href="../../public_html/css/comm_request-styling.css" rel="stylesheet">
