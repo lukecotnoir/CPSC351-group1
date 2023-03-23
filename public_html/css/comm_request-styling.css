@@ -6,61 +6,46 @@ select {
 }
 
 .comm_request-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     border-style: solid;
     background-color: var(--bg-dark);
     border-width: 2px;
     border-color: var(--bg-blue-primary);
     border-radius: 5px;
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
-    max-width: fit-content;
+    max-width: 550px;
     margin: auto;
     margin-top: 15px;
-    padding: 15px 15px;
-    font-size: 18px;
-    color: var(--text-primary);
 }
 
-.type-search {
+.comm_request-form form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 15px 15px;
+    font-size: 16px;
     color: var(--text-primary);
+}
+.stuff {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.stuff .line {
+    width: 100%;
+    justify-content: space-between;
 }
 .line, .two-items {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-    width: 75%;
-}
-.comm_request-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 40%;
 }
 
-.commtype {
-    justify-content: center;
-}
 .text-box input{
     font-size: 12px;
     width: 200px;
-}
-.two-items input {
-    width: 100px;
-}
-
-.CommSelect {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
  .title {
     font-size: 24px;
@@ -69,10 +54,7 @@ select {
     margin-bottom: 2px;
     color: var(--text-primary);
  }
- .terms {
-    color: var(--text-gray);
- }
- .terms, a{
-    color: var(--text-gray);
-    font-size: 12px;
- }
+
+ textarea {
+    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+}

@@ -3,73 +3,61 @@
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
       $choice = $_POST['comm_type'];
       $CommName = $_POST['PCSEAffiliate'];
-      $Accounts_UserID = $_POST['Accounts_UserID'];
       $Reason = $_POST['Reason'];
 ?>
 
 <link href="../../public_html/css/comm_request-styling.css" rel="stylesheet">
 <div class="comm_request-form">
-    <form action="Communities.php" method="post">
-      <div class='line'>
-        <div class = 'title'><p>Please select an option</p></div>
-        <div class ="line">
-          <div class="CommSelect">
-              <div class="commtype">
-                    <input type="radio" id="view_comms" name="comm_type" value="ViewCommunities" onclick = 'newRequest()'>
-                    <label for="view_comms">View Communities</label>
-                </div>
-                <div class="commtype">
-                    <input type="radio" id="view_requests" name="comm_type" value="CommunityRequests" onclick = 'newRequest()'>
-                    <label for="view_requests">Community Requests</label>
-                </div>
-                <div class="commtype">
-                    <input type="radio" id="make_requests" name="comm_type" value="MakeRequest" onclick="newRequest()">
-                    <label for="make_requests">Make Request</label>
-                </div>
-        </div>
+  <form action="Communities.php" method="post">
+    <div class= 'title'><p>Please select an option</p></div>
+    <hr style="width: 75%;">
+    <div class="line">
+      <label for="view_comms">View Communities</label>
+        <input type="radio" id="view_comms" name="comm_type" value="ViewCommunities" onclick = 'newRequest()' checked='checked'>
       </div>
-        <div id="textboxes" class="two-items" style="display: none">
-            <div class="line">
-                <p>New Community Name:&nbsp</p>
-                <div class="text-box"><input type="text" name="CommName" value="<?php echo $CommName; ?>"></div>
-            </div>
-            <div class="line">
-                <p>PCSE Affiliate:&nbsp</p>
-                <div class="text-box"><input type="text" name="PCSEAffiliate" value="<?php echo $PCSEAffiliate; ?>"></div>
-            </div>
-            <div class="line">
-                <p>Your ID:&nbsp</p>
-                <div class="text-box"><input type="text" name="Accounts_UserID" value="<?php echo $Accounts_UserID; ?>"></div>
-            </div>
-            <div class="line">
-                <p>Reason:&nbsp</p>
-                <div class="text-box"><input type="text" name="Reason" value="<?php echo $Reason; ?>"></div>
-            </div>
-        </div>
+      <div class="line">
+        <label for="view_requests">Community Requests</label>
+        <input type="radio" id="view_requests" name="comm_type" value="CommunityRequests" onclick = 'newRequest()'>
+      </div>
+      <div class="line">
+        <label for="make_requests">Make Request</label>
+        <input type="radio" id="make_requests" name="comm_type" value="MakeRequest" onclick="newRequest()">
+      </div>
 
-        <script>
-        function newRequest() {
-            var x = document.getElementById("make_requests");
-            if (x.checked) {
-              document.getElementById("textboxes").style.display="flex";
-            } else {
-              document.getElementById("textboxes").style.display="none";
-            }
-        }
-        </script>
+    <div class='stuff' style="display: none" id="stuff">
+      <div class="line">
+        <p>New Community Name:&nbsp</p>
+        <div class="text-box"><input type="text" name="CommName" value="<?php echo $CommName; ?>"></div>
+      </div>
+      <div class="line">
+        <p>PCSE Affiliate:&nbsp</p>
+        <div class="text-box"><input type="text" name="PCSEAffiliate" value="<?php echo $PCSEAffiliate; ?>"></div>
+      </div>
+      <div class="line">
+        <label for='reportdescribe'>Reason:</label>
+        <textarea id='request_describe' name='request_describe' rows="3" cols="30">Enter details here.</textarea>
+      </div>
+    </div>
+    <br>
+    <script>
+      function newRequest() {
+        var x = document.getElementById("make_requests");
+          if (x.checked) {
+            document.getElementById("stuff").style.display="flex";
+          } else {
+            document.getElementById("stuff").style.display="none";
+          }
+      }
+    </script>
 
-        <div class="button">
-          <input type="submit" name="submit">
-        </div>
-    </form>
+    <div class="button">
+      <input type="submit" name="submit">
+    </div>
+  </form>
 </div>
-<?php
-    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-?>
 
 <?php
 include_once(realpath(CONNECTION_PATH));
-include_once(realpath(TEMPLATES_PATH . "/header.php"));
 
 $want = $_POST['comm_type'];
 
@@ -113,4 +101,5 @@ if ($choice =='MakeRequest')
 }
 
 
+include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
