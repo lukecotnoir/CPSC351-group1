@@ -21,7 +21,7 @@
             <div class="text-box"><input type="text" name="searched"></div>
         </div>
         <div class=line>
-            <div class="button"><input type="submit" name="submit"></div>
+            <div class="button"><input type="submit" name="Search"></div>
         </div>
     </form>
 </div>
