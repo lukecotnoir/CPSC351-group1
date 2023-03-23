@@ -61,7 +61,7 @@ if ($type =="System" )
         echo "<br>Here are the $type Reports with Status:$status<br>";
         echo "<table border='1'>
         <tr>
-        <th>RepSys_ID</th><th>Reporter_Email</th><th>DropType</th><th>Details</th><th>Status</th>
+        <th>RepSys_ID</th><th>Reporter_Email</th><th>DropType</th><th>Detail</th><th>Status</th>
         </tr>
         ";
         while($row = $result->fetch_assoc())
@@ -69,7 +69,7 @@ if ($type =="System" )
             <td><a href=\"Reports_view.php?RepSys_ID={$row['RepSys_ID']}\">{$row['RepSys_ID']}</a></td>
             <td>{$row['ReporterEmail']}</td>
             <td>{$row['DropType']}</td>
-            <td>{$row['Details']}</td>
+            <td>{$row['Detail']}</td>
             <td>{$row['Status']}</td>
             </tr> ";
         } 
