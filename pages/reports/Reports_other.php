@@ -39,16 +39,8 @@
             </div>
             <div class="button"><input type="submit" name="submit"></div>
         </div>
-    </form>
-</div>
-
 <?php
-    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-?>
-<?php
-include_once(realpath(CONNECTION_PATH));
-include_once(realpath(TEMPLATES_PATH . "/header.php"));    
-
+include_once(realpath(CONNECTION_PATH)); 
 
 if(isset($_POST['dropdown'],$_SESSION['email']))
 {
@@ -82,24 +74,21 @@ if(isset($_POST['dropdown'],$_SESSION['email']))
     {
         $rep_ID = "none";
     }
-
-    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
-
     
     if($reporttype=="Account")
     {
-        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Acc_ID, Reason) 
-        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID' , '$reason')";
+        $sql_insert = "INSERT INTO Report_Other(DropType, Detail, ReporterEmail, Rep_Acc_ID, Reason, Status) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID' , '$reason', 'In Progress')";
     }
     if($reporttype=="Post")
     {
-        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Post_ID, Reason) 
-        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
+        $sql_insert = "INSERT INTO Report_Other(DropType, Detail, ReporterEmail, Rep_Post_ID, Reason, Status) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason', 'In Progress')";
     }
     if($reporttype=="Community")
     {
-        $sql_insert = "INSERT INTO report_other(DropType, OtherDetail, ReporterID, Rep_Comm_ID, Reason) 
-        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
+        $sql_insert = "INSERT INTO Report_Other(DropType, Detail, ReporterEmail, Rep_Comm_ID, Reason, Status) 
+        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason', 'In Progress')";
     }
     /*if($reporttype=="Message")
     {
@@ -107,19 +96,22 @@ if(isset($_POST['dropdown'],$_SESSION['email']))
         VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason')";
     }*/
     
-    
-
-    if ($conn->query($sql_insert) === TRUE)
+    if ($conn->query($sql_insert))
     {
-    echo "<br>Your report has been recorded and sent to Admin";
+        echo "<br>Your report has been recorded and sent to Admin";
     } 
     else 
     {
-    echo "Error: " . $sql_insert . "<br>" . $conn->error;
+        echo "Error: " . $sql_insert . "<br>" . $conn->error;
     }
 }
 else
 {
     echo "<br>Please fill out all required information before submitting.";
 }
+?>
+</form>
+</div>
+<?php
+    include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>

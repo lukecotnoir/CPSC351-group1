@@ -10,11 +10,11 @@
     }
 ?>
 <link href="../../public_html/css/report-page.css" rel="stylesheet">
-<form action="Reports_Admin.php" method="post">
-<div class = 'title'>Reports Page</div>
- <div class="report-form">
-    <div class = "two-items" >       
-        <div class="line">
+<div class='report-form'>
+    <form action="Reports_Admin.php" method="post">
+        <div class = 'title'>Reports Page</div>
+        <hr style="width: 75%">     
+         <div class="line">
             <div class="select">
                 <div class="searchtype">
                     <input type="radio" id="system" name="report_type" value="System" checked="checked">
@@ -39,7 +39,6 @@
                 </div>
            </div>
         </div>
-    </div>
         <div class="button">
             <input type="submit" name="submit">
         </div>
