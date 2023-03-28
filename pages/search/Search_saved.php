@@ -47,9 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class='title'><p style='text-decoration: underline;'>Search Results</p></div>
             <table border='1'>
             <tr>
-            <th>UserID</th><th>FirstName</th><th>LastName</th><th>StartYear</th>
-            <th>GraduationYear</th><th>Email</th><th>Acctype</th><th>Major</th>
-            <th>Minor</th><th>Employer</th><th>JobTitle</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Graduation Year</th>
+                <th>Account Type</th>
+                <th>Major</th>
+                <th>Minor</th>
+                <th>Employer</th>
+                <th>Job Title</th>
             </tr>
             ";
             $a = array();
@@ -60,12 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             foreach($a as $row)
             {   echo "<tr>
-                        <td>{$row['UserID']}</td>
                         <td>{$row['FirstName']}</td>
                         <td>{$row['LastName']}</td>
-                        <td>{$row['StartYear']}</td>
-                        <td>{$row['GraduationYear']}</td>
                         <td>{$row['Email']}</td>
+                        <td>{$row['GraduationYear']}</td>
                         <td>{$row['Acctype']}</td>
                         <td>{$row['Major']}</td>
                         <td>{$row['Minor']}</td>
