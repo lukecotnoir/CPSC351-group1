@@ -51,6 +51,7 @@ if(isset($_POST['email'], $_POST['pword'])) {
         echo "<p style='color: red;'>It looks like you don't have an account.</p>";
     }
     if ($email === $row['Email'] and $verify) {
+        $_SESSION['ID']       = $row['UserID'];
         $_SESSION['email']    = $row['Email'];
         $_SESSION['fName']    = $row['FirstName'];
         $_SESSION['lName']    = $row['LastName'];
