@@ -48,67 +48,68 @@
 
 <?php
 include_once(realpath(CONNECTION_PATH));
-$type = $_POST['report_type'];
-$status = $_POST['report_status'];
-if ($type =="System" )
-{   
-    echo "$type Reports";
-    $sql_find =  "SELECT * FROM report_system WHERE Status LIKE '$status'";                                                
-    $result = $conn->query($sql_find);
-    if ($result->num_rows >0)
-    {
-        echo "<br>Here are the $type Reports with Status:$status<br>";
-        echo "<table border='1'>
-        <tr>
-        <th>RepSys_ID</th><th>Reporter_Email</th><th>DropType</th><th>Detail</th><th>Status</th>
-        </tr>
-        ";
-        while($row = $result->fetch_assoc())
-        {   echo "<tr>
-            <td><a href=\"Reports_view.php?RepSys_ID={$row['RepSys_ID']}\">{$row['RepSys_ID']}</a></td>
-            <td>{$row['ReporterEmail']}</td>
-            <td>{$row['DropType']}</td>
-            <td>{$row['Detail']}</td>
-            <td>{$row['Status']}</td>
-            </tr> ";
-        } 
-        echo "</table>";
-    }
-	else {
-		echo "<br>There are no filed reports with those requirements";
-	}
-    
-}
-if ($type == "Other")
-{
-    echo "$type Reports";
-
-    $sql_find =  "SELECT * FROM report_other WHERE Status LIKE '$status' ";
-                                               
-    $result = $conn->query($sql_find);
-    if ($result->num_rows >0)
-    {   echo "<br>Here are the $type Reports with Status:$status<br>";
-        echo "<table border='1'><tr>
-        <th>RepOth_ID</th><th>ReporterEmail</th><th>DropType</th><th>Detail</th><th>Status</th>
-        </tr>";
-        while($row = $result->fetch_assoc())
-        {   echo "<tr>
-            <td><a href=\"Reports_view.php?RepOth_ID={$row['RepOth_ID']}\">{$row['RepOth_ID']}</a></td>
-            <td>{$row['ReporterEmail']}</td>
-            <td>{$row['DropType']}</td>
-            <td>{$row['Detail']}</td>
-            <td>{$row['Status']}</td>
-            </tr>";
-
-        }  
-        echo "</table>";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $type = $_POST['report_type'];
+    $status = $_POST['report_status'];
+    if ($type =="System" )
+    {   
+        echo "$type Reports";
+        $sql_find =  "SELECT * FROM report_system WHERE Status LIKE '$status'";                                                
+        $result = $conn->query($sql_find);
+        if ($result->num_rows >0)
+        {
+            echo "<br>Here are the $type Reports with Status:$status<br>";
+            echo "<table border='1'>
+            <tr>
+            <th>RepSys_ID</th><th>Reporter_Email</th><th>DropType</th><th>Detail</th><th>Status</th>
+            </tr>
+            ";
+            while($row = $result->fetch_assoc())
+            {   echo "<tr>
+                <td><a href=\"Reports_view.php?RepSys_ID={$row['RepSys_ID']}\">{$row['RepSys_ID']}</a></td>
+                <td>{$row['ReporterEmail']}</td>
+                <td>{$row['DropType']}</td>
+                <td>{$row['Detail']}</td>
+                <td>{$row['Status']}</td>
+                </tr> ";
+            } 
+            echo "</table>";
+        }
+        else {
+            echo "<br>There are no filed reports with those requirements";
+        }
         
     }
-	else {
-		echo "<br>There are no results for your search ";
-	}
-}
+    if ($type == "Other")
+    {
+        echo "$type Reports";
 
+        $sql_find =  "SELECT * FROM report_other WHERE Status LIKE '$status' ";
+                                                
+        $result = $conn->query($sql_find);
+        if ($result->num_rows >0)
+        {   echo "<br>Here are the $type Reports with Status:$status<br>";
+            echo "<table border='1'><tr>
+            <th>RepOth_ID</th><th>ReporterEmail</th><th>DropType</th><th>Detail</th><th>Status</th>
+            </tr>";
+            while($row = $result->fetch_assoc())
+            {   echo "<tr>
+                <td><a href=\"Reports_view.php?RepOth_ID={$row['RepOth_ID']}\">{$row['RepOth_ID']}</a></td>
+                <td>{$row['ReporterEmail']}</td>
+                <td>{$row['DropType']}</td>
+                <td>{$row['Detail']}</td>
+                <td>{$row['Status']}</td>
+                </tr>";
+
+            }  
+            echo "</table>";
+            
+        }
+        else {
+            echo "<br>There are no results for your search ";
+        }
+    }
+}
 /*For Changing a report
 Not sure how to remove a post but changing status to complete
 After selecting the report they want to change, store the Rep_ID to a local? variable and use it

@@ -26,7 +26,7 @@
                 if(isset($_SESSION['email'])) {
                     echo "<a href='/CPSC351-GROUP1/pages/event_board/Event_board.php'>Event Board</a>";
                     echo "<a href='/CPSC351-GROUP1/pages/communities/Communities.php'>Communities</a>";
-                    echo "<a href='#'>Messages</a>";
+                    echo "<a href='/CPSC351-GROUP1/pages/messaging/Messaging.php'>Messages</a>";
                 
                 }
             ?>
