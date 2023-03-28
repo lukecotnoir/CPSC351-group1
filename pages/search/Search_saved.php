@@ -32,39 +32,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $choice = $_POST['search_type'];
     if ($choice =="Account" )
     {
-        $sql_find1 =  "SELECT * FROM accounts WHERE FirstName LIKE '$searched%' OR
-                                                    LastName LIKE '$searched%' OR
-                                                    StartYear LIKE '$searched%'OR 
-                                                    GraduationYear LIKE '$searched%' OR
-                                                    Major LIKE '$searched%' OR
-                                                    Minor LIKE '$searched%' OR
-                                                    Employer LIKE '$searched%' OR
-                                                    JobTitle LIKE '$searched%'";     
-        $searched2 = explode(" ", $searched)[0];
-        $sql_find2 =  "SELECT * FROM accounts WHERE FirstName LIKE '$searched2%' OR
-                                                    LastName LIKE '$searched2%' OR
-                                                    StartYear LIKE '$searched2%'OR 
-                                                    GraduationYear LIKE '$searched2%' OR
-                                                    Major LIKE '$searched2%' OR
-                                                    Minor LIKE '$searched2%' OR
-                                                    Employer LIKE '$searched2%' OR
-                                                    JobTitle LIKE '$searched2%'";
-        $searched3 = explode(" ", $searched)[1];
-        $sql_find3 =  "SELECT * FROM accounts WHERE FirstName LIKE '$searched3%' OR
-                                                    LastName LIKE '$searched3%' OR
-                                                    StartYear LIKE '$searched3%'OR 
-                                                    GraduationYear LIKE '$searched3%' OR
-                                                    Major LIKE '$searched3%' OR
-                                                    Minor LIKE '$searched3%' OR
-                                                    Employer LIKE '$searched3%' OR
-                                                    JobTitle LIKE '$searched3%'";
-
-                                               
+        $sql_find1 =  "SELECT * FROM accounts WHERE CONCAT( FirstName, ' ', LastName ) LIKE '%$searched%' OR
+                                                    CONCAT( LastName, ' ', FirstName ) LIKE '%$searched%' OR
+                                                    Email LIKE '%$searched%' OR
+                                                    StartYear LIKE '%$searched%' OR 
+                                                    GraduationYear LIKE '%$searched%' OR
+                                                    Major LIKE '%$searched%' OR
+                                                    Minor LIKE '%$searched%' OR
+                                                    Employer LIKE '%$searched%' OR
+                                                    JobTitle LIKE '%$searched%'";     
         $result1 = $conn->query($sql_find1);
-        $result2 = $conn->query($sql_find2);
-        $result3 = $conn->query($sql_find3);
-        if (($result1->num_rows >0) || ($result2->num_rows > 0) || ($result3->num_rows > 0))
-        {
+        if (($result1->num_rows >0)) {
             echo "<div class='results_table'>
             <div class='title'><p style='text-decoration: underline;'>Search Results</p></div>
             <table border='1'>
@@ -76,16 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ";
             $a = array();
             while($row = $result1->fetch_assoc()) {
-                if(!in_array($row, $a)) {
-                    $a[] = $row;
-                }
-            }
-            while($row = $result2->fetch_assoc()) {
-                if(!in_array($row, $a)) {
-                    $a[] = $row;
-                }
-            }
-            while($row = $result3->fetch_assoc()) {
                 if(!in_array($row, $a)) {
                     $a[] = $row;
                 }
