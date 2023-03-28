@@ -28,7 +28,7 @@
                 <textarea id='otherdetail' name='otherdetail' rows="3" cols="40">Enter details here.</textarea>
             </div>
             <div class="line">
-                <p>Email of who or what you are reporting:</p>
+                <p>Email of who or ID of what you are reporting:</p>
                 <div class="text-box"><input type ='text', name='rep_ID'></div>
             </div>
             <div class="line">

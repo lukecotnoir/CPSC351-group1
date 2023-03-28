@@ -82,7 +82,7 @@ if(!isset($_SESSION['email'])) {
         echo "  
         <div class = two-items>
             <div class = line><p>Report Type:</p></div>
-            <div class = line><p>Report System</p></div>
+            <div class = line><p>Report Other</p></div>
         </div>
         <div class=two-items>
                 <div class=line><p>Report ID:</p></div>
@@ -104,18 +104,12 @@ if(!isset($_SESSION['email'])) {
                 <div class=line><p>Status:</p></div>
                 <div class=line><p>".$Status."</p></div>
         </div>
-        <a href=\"Reports_edit.php?RepSys_ID={$row['RepSys_ID']}\">Edit Report</a>
     ";
     }?>  
 
 
-    <div class=button style="padding: 5px"><input id="edit_button" type="button" value="Edit Report" ></div>
-    
-    <script type="text/javascript">
-    document.getElementById("edit_button").onclick = function () {
-    location.href = "/CPSC351-group1/pages/reports/Reports_edit.php";
-    };
-    </script>
+<div class=button><input type="submit" name="submit" value="Submit Changes"></div>
+
     
 </div>
 
