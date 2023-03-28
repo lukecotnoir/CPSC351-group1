@@ -38,7 +38,7 @@ if(isset($_POST['email'], $_POST['pword'])) {
     include_once(realpath(CONNECTION_PATH));
     $sql = "SELECT * FROM accounts where Email = '".$email."'";
     $result = $conn->query($sql);
-
+    
     //db execute query
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
