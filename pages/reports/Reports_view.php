@@ -14,50 +14,63 @@ if(!isset($_SESSION['email'])) {
 
     <?php 
     include_once(realpath(CONNECTION_PATH));
-    if ($_REQUEST['RepOth_ID'])
+    if (isset($_REQUEST['RepOth_ID']))
+    {
         $RepOth_ID = $_REQUEST['RepOth_ID'];
         $sql_find =  "SELECT * FROM report_other WHERE RepOth_ID = '$RepOth_ID' ";                              
         $result = $conn->query($sql_find);
-    if ($result->num_rows >0)
-    {   while($row = $result->fetch_assoc())
-        {   $ReporterEmail = $row['ReporterEmail'];
-            $DropType = $row['DropType'];
-            $Detail = $row['Detail'];
-            $Status = $row['Status'];   
-        }  
-        echo "  
-        <div class = two-items>
-            <div class = line><p>Report Type:</p></div>
-            <div class = line><p>Report Other</p></div>
-        </div>
-        <div class=two-items>
+        if ($result->num_rows >0)
+        {   while($row = $result->fetch_assoc())
+            {   $ReporterEmail = $row['ReporterEmail'];
+                $DropType = $row['DropType'];
+                $Detail = $row['Detail'];
+                $Status = $row['Status'];   
+                if(isset($row['Rep_Acc_ID']))
+                {$Rep_ID = $row['Rep_Acc_ID'];}
+                if(isset($row['Rep_Comm_ID']))
+                {$Rep_ID = $row['Rep_Comm_ID'];}
+                if(isset($row['Rep_Mess_ID']))
+                {$Rep_ID = $row['Rep_Mess_ID'];}
+                if(isset($row['Rep_Post_ID']))
+                {$Rep_ID = $row['Rep_Post_ID'];}
+            }  
+            echo "  
+            <div class = two-items>
+                <div class = line><p>Report Type:</p></div>
+                <div class = line><p>Report Other</p></div>
+            </div>
+            <div class=two-items>
                 <div class=line><p>Report ID:</p></div>
                 <div class=line><p>".$RepOth_ID."</p></div>
-        </div>
-        <div class=two-items>
+            </div>
+            <div class=two-items>
                 <div class=line><p>Reporter Email:</p></div>
                 <div class=line><p>".$ReporterEmail."</p></div>
-        </div>
-        <div class=two-items>
-                <div class=line><p>Drop Type:</p></div>
-                <div class=line><p>".$DropType."</p></div>
-        </div>
-        <div class=two-items>
-                <div class=line><p>Detail:</p></div>
-                <div class=line><p>".$Detail."</p></div>
-        </div>
-        <div class=two-items>
-                <div class=line><p>Status:</p></div>
-                <div class=line><p>".$Status."</p></div>
-        </div>
-    ";
+            </div>
+            <div class=two-items>
+                    <div class=line><p>Drop Type:</p></div>
+                    <div class=line><p>".$DropType."</p></div>
+            </div>
+            <div class=two-items>
+                    <div class=line><p>What is being reported:</p></div>
+                    <div class=line><p>".$Rep_ID."</p></div>
+            </div>
+            <div class=two-items>
+                    <div class=line><p>Detail:</p></div>
+                    <div class=line><p>".$Detail."</p></div>
+            </div>
+            <div class=two-items>
+                    <div class=line><p>Status:</p></div>
+                    <div class=line><p>".$Status."</p></div>
+            </div>";
+        }
     }?>
   
   <?php 
     include_once(realpath(CONNECTION_PATH));
-    if ($_REQUEST['RepOth_ID'])
-        $RepOth_ID = $_REQUEST['RepOth_ID'];
-        $sql_find =  "SELECT * FROM report_other WHERE RepOth_ID = '$RepOth_ID' ";                              
+    if ($_REQUEST['RepSys_ID'])
+        $RepSys_ID = $_REQUEST['RepSys_ID'];
+        $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID' ";                              
         $result = $conn->query($sql_find);
     if ($result->num_rows >0)
     {   while($row = $result->fetch_assoc())
@@ -73,7 +86,7 @@ if(!isset($_SESSION['email'])) {
         </div>
         <div class=two-items>
                 <div class=line><p>Report ID:</p></div>
-                <div class=line><p>".$RepOth_ID."</p></div>
+                <div class=line><p>".$RepSys_ID."</p></div>
         </div>
         <div class=two-items>
                 <div class=line><p>Reporter Email:</p></div>
