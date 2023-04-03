@@ -37,8 +37,7 @@
                 </div>
             </div>";
         }
-    }
-        
+    }     
 ?>
 <script>
     function myFunction() {

@@ -8,11 +8,15 @@
     <meta charset="UTF-8">
     <title>Event Sign Up Form</title>
     <style>
+      p {
+        color: var(--text-primary);
+      }
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
+        font-family: var(--global-font);
+        background-color: var(--bg-dark);
       }
       h1 {
+        color: var(--text-primary);
         text-align: center;
         margin-top: 50px;
       }
@@ -37,7 +41,7 @@
         margin-bottom: 20px;
       }
       input[type=submit] {
-        background-color: #4CAF50;
+        background-color: var(--bg-blue-secondary);
         color: white;
         padding: 12px 20px;
         border: none;
@@ -45,7 +49,7 @@
         cursor: pointer;
       }
       input[type=submit]:hover {
-        background-color: #45a049;
+        background-color: #FFD700;
       }
       .error {
         color: red;
@@ -78,13 +82,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $row = $result->fetch_assoc();
       $eventid = $row['idEvents'];
       $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) VALUES (".$eventid.", ".$_SESSION['ID'].")";
-    }
-
-
-    if ($conn->query($sql2) === TRUE) {
+      echo 'test';
+      echo $sql2;
+      $ver = $conn->query($sql2);
+      if ($ver) {
         echo "<p>Thank you for signing up for $event on $date!</p>";
-    } else {
-        echo "Error: " . $sql2 . "<br>" . $conn->error;
+      } 
+      else {
+        echo"<p>It looks like you've already signed up for $event on $date.</p>";
+      }
     }
 
     $conn->close();
