@@ -57,42 +57,40 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle form submission
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $email = $_SESSION['email'];
     $date = $_POST['date'];
     $event = $_POST['event'];
-
     // Connect to MySQL database
-    $host = 'localhost';
-    $username = 'your_username_here';
-    $password = 'your_password_here';
-    $database = 'your_database_name_here';
 
-    $conn = new mysqli($host, $username, $password, $database);
+    include_once(realpath(CONNECTION_PATH));
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
     // Insert form data into MySQL database
-    $sql = "INSERT INTO signups (name, email, date, event) VALUES ('$name', '$email', '$date', '$event')";
+    $sql1 = "SELECT idEvents FROM Events WHERE EventDate = '".$date ."' AND EventLocation = '".$event."'";
+    $result = $conn->query($sql1);
+    if ($result->num_rows == 0) {
+      echo "<p> That event was not found. Make sure the entered information is correct.</p>";
+    }
+    else {
+      $row = $result->fetch_assoc();
+      $eventid = $row['idEvents'];
+      $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) VALUES (".$eventid.", ".$_SESSION['ID'].")";
+    }
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<p>Thank you for signing up for $event on $date, $name!</p>";
+
+    if ($conn->query($sql2) === TRUE) {
+        echo "<p>Thank you for signing up for $event on $date!</p>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql2 . "<br>" . $conn->error;
     }
 
     $conn->close();
 } else {
     // Display form
     echo '<form method="POST">';
-    echo '<label for="name">Name:</label>';
-    echo '<input type="text" name="name" required>';
-    echo '<br>';
-    echo '<label for="email">Email:</label>';
-    echo '<input type="email" name="email" required>';
-    echo '<br>';
     echo '<label for="date">Date:</label>';
     echo '<input type="date" name="date" required>';
     echo '<br>';
