@@ -82,8 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $row = $result->fetch_assoc();
       $eventid = $row['idEvents'];
       $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) VALUES (".$eventid.", ".$_SESSION['ID'].")";
-      echo 'test';
-      echo $sql2;
       $ver = $conn->query($sql2);
       if ($ver) {
         echo "<p>Thank you for signing up for $event on $date!</p>";
