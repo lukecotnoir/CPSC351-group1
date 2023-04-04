@@ -32,12 +32,12 @@
     filter: invert(100%) sepia(96%) saturate(0%) hue-rotate(96deg) brightness(104%) contrast(104%);
 }
 
-@media (max-width: 810px) {
+@media (max-width: 855px) {
     .navbar {
         flex-direction: column;
     }
 }
-@media (max-width: 590px) {
+@media (max-width: 700px) {
     .navbar {
         padding: 10px;
     }
