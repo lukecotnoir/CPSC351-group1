@@ -33,10 +33,32 @@ if(!isset($_SESSION['email'])) {
                 {$Rep_ID = $row['Rep_Mess_ID'];}
                 if(isset($row['Rep_Post_ID']))
                 {$Rep_ID = $row['Rep_Post_ID'];}
-            }
-        }
-    }
-?>
+            }  
+            echo "  
+            <div class = two-items>
+                <div class = line><p>Report Type:</p></div>
+                <div class = line><p>Report Other</p></div>
+            </div>
+            <div class=two-items>
+                <div class=line><p>Report ID:</p></div>
+                <div class=line><p>".$RepOth_ID."</p></div>
+            </div>
+            <div class=two-items>
+                <div class=line><p>Reporter Email:</p></div>
+                <div class=line><p>".$ReporterEmail."</p></div>
+            </div>
+            <div class=two-items>
+                    <div class=line><p>Drop Type:</p></div>
+                    <div class=line><p>".$DropType."</p></div>
+            </div>
+            <div class=two-items>
+                    <div class=line><p>What is being reported:</p></div>
+                    <div class=line><p>".$Rep_ID."</p></div>
+            </div>
+            <div class=two-items>
+                    <div class=line><p>Detail:</p></div>
+                    <div class=line><p>".$Detail."</p></div>
+            </div>
             <br>Status is set to $Status<br>
             <div class='line'>
             <p>Status:</p>
@@ -85,7 +107,27 @@ if(!isset($_SESSION['email'])) {
             $Detail = $row['Detail'];
             $Status = $row['Status'];   
         }  
-        echo "   
+        echo "  
+        <div class = two-items>
+            <div class = line><p>Report Type:</p></div>
+            <div class = line><p>Report System</p></div>
+        </div>
+        <div class=two-items>
+                <div class=line><p>Report ID:</p></div>
+                <div class=line><p>".$RepSys_ID."</p></div>
+        </div>
+        <div class=two-items>
+                <div class=line><p>Reporter Email:</p></div>
+                <div class=line><p>".$ReporterEmail."</p></div>
+        </div>
+        <div class=two-items>
+                <div class=line><p>Drop Type:</p></div>
+                <div class=line><p>".$DropType."</p></div>
+        </div>
+        <div class=two-items>
+                <div class=line><p>Detail:</p></div>
+                <div class=line><p>".$Detail."</p></div>
+        </div>
     <br>Status is set to $Status<br>
         <div class='line'>
             <p>Status:</p>
@@ -95,8 +137,7 @@ if(!isset($_SESSION['email'])) {
                     <option value = 'Complete'>Complete</option>
                     </select>
                 </div>
-        </div>
-        <div class=button><input type='submit' name='submit' value='Submit'></div>";
+        </div>";
        
         include_once(realpath(CONNECTION_PATH));
         if(isset($_POST['dropdown']))
@@ -121,6 +162,13 @@ if(!isset($_SESSION['email'])) {
 
 ?>   
 
+<div class=button><input type='submit' name='submit' value='Submit'></div>
+
+
+
+
+    
+</div>
 
 <?php
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));

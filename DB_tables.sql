@@ -60,17 +60,25 @@ CREATE TABLE IF NOT EXISTS `Accounts_Attending` (
 
 
 -- -----------------------------------------------------
--- Table `Post`
+-- Table `mydb`.`Post`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Post` (
   `PostID` INT NOT NULL AUTO_INCREMENT,
-  `Accounts_CNUID` INT NOT NULL,
+  `UserID` INT NOT NULL,
   `PostTime` DATETIME NULL,
-  PRIMARY KEY (`PostID`, `Accounts_CNUID`),
-  FOREIGN KEY (`Accounts_CNUID`)
-  REFERENCES `Accounts` (`UserID`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION);
+  `PostText` VARCHAR(400) NULL,
+  `CommID` INT NOT NULL,
+  PRIMARY KEY (`PostID`, `UserID`, `CommID`),
+  CONSTRAINT `UserID`
+    FOREIGN KEY (`UserID`)
+    REFERENCES `mydb`.`Accounts` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `CommID`
+    FOREIGN KEY (`CommID`)
+    REFERENCES `mydb`.`Community` (`CommID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 
 
 -- -----------------------------------------------------
@@ -102,20 +110,6 @@ CREATE TABLE IF NOT EXISTS `Accounts_in_Comm` (
   ON DELETE NO ACTION
   ON UPDATE NO ACTION);
 
-
--- -----------------------------------------------------
--- Table `Job Post`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Job Post` (
-  `idJobPost` INT NOT NULL AUTO_INCREMENT,
-  `Job_location` VARCHAR(45) NULL,
-  `Alumni_idAlumni` INT NOT NULL,
-  `Accounts_UserID` INT NOT NULL,
-  PRIMARY KEY (`idJobPost`, `Alumni_idAlumni`, `Accounts_UserID`),
-  FOREIGN KEY (`Accounts_UserID`)
-  REFERENCES `Accounts` (`UserID`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
 -- Table `Report_System`
