@@ -60,25 +60,25 @@ CREATE TABLE IF NOT EXISTS `Accounts_Attending` (
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Post`
+-- Table `Post`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Post` (
   `PostID` INT NOT NULL AUTO_INCREMENT,
   `UserID` INT NOT NULL,
   `PostTime` DATETIME NULL,
-  `PostText` VARCHAR(400) NULL,
+  `PostText` VARCHAR(400) NOT NULL,
   `CommID` INT NOT NULL,
   PRIMARY KEY (`PostID`, `UserID`, `CommID`),
   CONSTRAINT `UserID`
     FOREIGN KEY (`UserID`)
-    REFERENCES `mydb`.`Accounts` (`UserID`)
+    REFERENCES `Accounts` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `CommID`
     FOREIGN KEY (`CommID`)
-    REFERENCES `mydb`.`Community` (`CommID`)
+    REFERENCES `Community` (`CommID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
