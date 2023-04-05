@@ -1,23 +1,30 @@
-<html><body>
-
-
-Welcome to PCSU Student-Alum Connection!
-
-
-
-<form action="request_community.php" method="post">
-
-
-New Community Request: <br><br>
-
-Enter Community Information:
-<br>
-
-Community Name: <input type="text" name="comm_name"><br>
-Community Affiliate Name: <input type="text" name="affiliate_name"> <br>
-Reason for Request: <input type='text' name='reason'><br>
-<input type="submit" name="submit">
-</form>
+<?php
+    include_once(realpath("../../resources/config.php"));
+    include_once(realpath(TEMPLATES_PATH . "/header.php"));
+    if(!isset($_SESSION['email'])) {
+        header("location:/CPSC351-group1/index.php");
+    }
+?>
+<link href=/CPSC351-GROUP1/public_html/css/sign_up-styling.css rel="stylesheet">
+<div class='login-form'>
+  <form action="request_community.php" method="post">
+    <div class='title'><p>New Community Request: </p></div>
+    <hr style="width: 75%">
+    <div class='line'>
+      <p>Community Name:</p>
+      <div class='text-box'><input type="text" name="comm_name"></div>
+    </div>
+    <div class='line'>
+      <p>Community Affiliate Name:</p>
+      <div class='text-box'><input type="text" name="affiliate_name"></div>
+    </div>
+    <div class='line'>
+      <p>Reason for Request:</p>
+      <div class='text-box'><input type='text' name='reason'></div>
+    </div>
+    <div class=button><input type="submit" name="submit"></div>
+  </form>
+</div>
 
 
 <?php
@@ -48,4 +55,6 @@ if(isset($_POST['comm_name'], $_POST['affiliate_name'], $_POST['reason']))
 
 }
 ?>
-</body></html>
+<?php
+    include_once(realpath(TEMPLATES_PATH . "/footer.php"))
+?>

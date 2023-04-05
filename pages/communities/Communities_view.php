@@ -109,7 +109,7 @@
         return confirm("Are you sure you want to join?");
     }
 </script>
-<div class='request'><a href="Communities.php">Request New Community</a></div>
+<div class='request'><a href="request_community.php">Request New Community</a></div>
 <?php
     include_once(realpath(TEMPLATES_PATH . "/footer.php"))
 ?>
