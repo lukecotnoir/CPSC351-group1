@@ -23,38 +23,30 @@
       <div class='text-box'><input type='text' name='reason'></div>
     </div>
     <div class=button><input type="submit" name="submit"></div>
-  </form>
-</div>
-
 
 <?php
-if(isset($_POST['comm_name'], $_POST['affiliate_name'], $_POST['reason']))
+if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+  include_once(realpath(CONNECTION_PATH));
   $community_name = $_POST['comm_name'];
   $affiliate_name = $_POST['affiliate_name'];
   $reason = $_POST['reason'];
 
-  # this connects to the local host
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "cpsc351_project";
-
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-
-  $sql = "INSERT INTO Comm_Requests (CommName, PCSEAffiliate, Reason)
-  VALUES ('$community_name', '$affiliate_name', '$reason')";
+  $sql = "INSERT INTO Comm_Requests (CommName, PCSEAffiliate, Accounts_UserID, Reason)
+  VALUES ('".$community_name."', '".$affiliate_name."', ".$_SESSION['ID'].", '".$reason."')";
 
   if(mysqli_query($conn, $sql)){
-    echo "<h4> Request Successfully Submitted";
+    echo "<div class='line'><p>Request successfully submitted</p></div>";
+  }
+  else {
+    echo "<div class='line'><p>Error. Please try again.</p></div>";
+    
   }
 
 }
 ?>
+</form>
+</div>
 <?php
     include_once(realpath(TEMPLATES_PATH . "/footer.php"))
 ?>
