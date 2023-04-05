@@ -82,12 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $row = $result->fetch_assoc();
       $eventid = $row['idEvents'];
       $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) VALUES (".$eventid.", ".$_SESSION['ID'].")";
-      $ver = $conn->query($sql2);
-      if ($ver) {
-        echo "<p>Thank you for signing up for $event on $date!</p>";
+      $ver = mysqli_query($conn, $sql2);
+      if (!$ver) {
+        echo"<p>It looks like you've already signed up for $event on $date.</p>";
       } 
       else {
-        echo"<p>It looks like you've already signed up for $event on $date.</p>";
+        echo "<p>Thank you for signing up for $event on $date!</p>";
       }
     }
 

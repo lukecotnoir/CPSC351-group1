@@ -17,19 +17,30 @@
     <div class="navbar">
         <div class="logo"><a href="/CPSC351-GROUP1/index.php"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Christopher_Newport_University_%28logo%29.svg/2560px-Christopher_Newport_University_%28logo%29.svg.png" alt="CNU Logo"></a></div>
         <div class="menu">
+            <ul>
             <?php 
                 if(isset($_SESSION['accType']) && ($_SESSION['accType'] == "Admin"))
-                    echo "<a href = '/CPSC351-GROUP1/pages/reports/Reports_Admin.php'>Admin</a>";
+                    echo "
+                        <li>
+                            <a href='#'>Admin +</a>
+                            <ul>
+                                <li><a href='/CPSC351-GROUP1/pages/reports/Reports_Admin.php'>Reports</a></li>
+                                <li><a href='/CPSC351-GROUP1/pages/reports/Community_requests.php'>Requests</a></li>
+                            </ul>
+                        </li>
+                    ";
+                    
             ?>
-            <a href="/CPSC351-GROUP1/pages/search/Search_saved.php">Search</a>
+            <li><a href="/CPSC351-GROUP1/pages/search/Search_saved.php">Search</a></li>
             <?php
                 if(isset($_SESSION['email'])) {
-                    echo "<a href='/CPSC351-GROUP1/pages/event_board/Event_board.php'>Event Board</a>";
-                    echo "<a href='/CPSC351-GROUP1/pages/communities/Communities_view.php'>Communities</a>";
-                    echo "<a href='/CPSC351-GROUP1/pages/messaging/Messaging.php'>Messages</a>";
+                    echo "<li><a href='/CPSC351-GROUP1/pages/event_board/Event_board.php'>Event Board</a></li>";
+                    echo "<li><a href='/CPSC351-GROUP1/pages/communities/Communities_view.php'>Communities</a></li>";
+                    echo "<li><a href='/CPSC351-GROUP1/pages/messaging/Messaging.php'>Messages</a></li>";
                 
                 }
             ?>
-            <a <?php if(isset($_SESSION['email'])) echo "href='/CPSC351-GROUP1/pages/accounts/Account.php'>Account"; else echo "href='/CPSC351-GROUP1/pages/accounts/Login.php'>Login";?></a>
+                <li><a <?php if(isset($_SESSION['email'])) echo "href='/CPSC351-GROUP1/pages/accounts/Account.php'>Account"; else echo "href='/CPSC351-GROUP1/pages/accounts/Login.php'>Login";?></a></li>
+            </ul>
         </div>
     </div>
