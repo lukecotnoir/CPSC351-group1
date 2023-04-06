@@ -5,13 +5,10 @@
         header("location:/CPSC351-group1/index.php");
     }
     include_once(realpath(CONNECTION_PATH));
-    $sql = "INSERT INTO Accounts_in_Comm (Accounts_CNUID, Community_idCommunity)
-            VALUES (".$_SESSION['ID'].", ".$_GET['id'].")";
+    $sql = "DELETE FROM Comm_Requests WHERE request_ID = ".$_GET['id']."";
     $ver = mysqli_query($conn, $sql);
-    $sql2 = "UPDATE Community SET MemberCount = MemberCount + 1 WHERE CommID = ".$_GET['id']."";
-    $ver2 = mysqli_query($conn, $sql2);
     if(!$ver)
         die ("The error is: " . mysqli_error($conn));
     else
-        header("location:/CPSC351-group1/pages/communities/Communities_view.php");
+        header("location:/CPSC351-group1/pages/reports/Community_requests.php");
 ?>

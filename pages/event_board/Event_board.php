@@ -81,7 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
       $row = $result->fetch_assoc();
       $eventid = $row['idEvents'];
-      $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) VALUES (".$eventid.", ".$_SESSION['ID'].")";
+      $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) SELECT * FROM Accounts_Attending WHERE NOT EXISTS 
+              (SELECT * FROM Accounts_Attending WHERE Events_idEvents = ".$eventid." AND Accounts_CNUID = ".$_SESSION['ID'].")";
       $ver = mysqli_query($conn, $sql2);
       if (!$ver) {
         echo"<p>It looks like you've already signed up for $event on $date.</p>";
