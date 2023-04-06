@@ -30,6 +30,7 @@ body {
     margin: 8px;
 
 }
+
 .typeSelect {
     display: flex;
     flex-direction: column;
@@ -40,6 +41,7 @@ body {
     font-size: 24px;
 }
 
+
 .details {
     display: flex;
     flex-direction: column;
@@ -48,4 +50,31 @@ body {
 
 textarea {
     font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+}
+
+  .title {
+    font-size: 24px;
+    width: 75%;
+    text-align: center;
+    margin-bottom: 2px;
+}
+table, th {
+    color: var(--text-primary);
+    border: 1;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--bg-blue-primary);
+  }
+td {
+    text-align: center;
+    padding: 5px;
+} 
+.results_table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 15px;
+    color: var(--text-primary);
 }

@@ -65,3 +65,9 @@ td {
     padding: 15px 15px;
     color: var(--text-primary);
 }
+.results_table table tbody tr td a{
+    color: var(--text-primary);
+}
+.results_table table tbody tr td a:hover{
+    color: var(--text-secondary);
+}

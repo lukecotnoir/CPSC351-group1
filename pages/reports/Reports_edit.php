@@ -5,12 +5,14 @@ if(!isset($_SESSION['email'])) {
     header("location:/CPSC351-group1/index.php");
 }
 ?>
+
 <link href="../../public_html/css/report-page.css" rel="stylesheet">
+
 
 <?php 
     include_once(realpath(CONNECTION_PATH));
     if (isset($_REQUEST['RepOth_ID']))
-    {
+    {   
         $RepOth_ID = $_REQUEST['RepOth_ID'];
         $sql_find =  "SELECT * FROM report_other WHERE RepOth_ID = '$RepOth_ID' ";                              
         $result = $conn->query($sql_find);
@@ -29,6 +31,7 @@ if(!isset($_SESSION['email'])) {
                 {$Rep_ID = $row['Rep_Mess_ID'];}
                 if(isset($row['Rep_Post_ID']))
                 {$Rep_ID = $row['Rep_Post_ID'];}
+
             } 
             echo "</div>
             <br>Status is set to $Status<br>
@@ -65,6 +68,7 @@ if (isset($_REQUEST['RepSys_ID']))
     $RepSys_ID = $_REQUEST['RepSys_ID'];
     $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID' ";                              
     $result = $conn->query($sql_find);
+
     if ($result->num_rows >0)
     {   while($row = $result->fetch_assoc())
         {   $table = 'report_system';
@@ -72,11 +76,18 @@ if (isset($_REQUEST['RepSys_ID']))
             $DropType = $row['DropType'];
             $Detail = $row['Detail'];
             $Status = $row['Status'];   
+
         } 
         echo "</div>
         <br>Status is set to $Status<br>
         <div class='line'>" ;
     }
+
+
+        }
+            
+        }
+}
 
 
     if ($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -98,6 +109,7 @@ if (isset($_REQUEST['RepSys_ID']))
     //     echo"here";
     // }
 }
+
 
 ?>
 </form>

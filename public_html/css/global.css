@@ -48,5 +48,5 @@ a:hover {
     background-color: var(--text-primary);
     color: black;
     transition: 0.1s ease;
-    padding: 1px;
+    padding: 2px;
 }
