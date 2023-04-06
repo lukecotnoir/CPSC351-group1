@@ -104,7 +104,7 @@ if(!isset($_SESSION['email'])) {
                 <div class=line><p>Status:</p></div>
                 <div class=line><p>".$Status."</p></div>
         </div>
-        <a href=\"Reports_edit.php?RepSys_ID={$row['RepSys_ID']}\">Edit Report</a>
+        <a href=\"Reports_edit.php?RepSys_ID={$RepSys_ID}\">Edit Report</a>
     ";
     }?>  
 
