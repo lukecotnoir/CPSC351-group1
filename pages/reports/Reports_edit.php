@@ -5,12 +5,9 @@ if(!isset($_SESSION['email'])) {
     header("location:/CPSC351-group1/index.php");
 }
 ?>
-<link href="../../public_html/css/account.css" rel="stylesheet">
-<div class=account_info>
-    <div class=title>
-        <p>Report Edit&nbsp;</p>
-    </div>
-    <hr style="width: 75%">
+
+<link href="../../public_html/css/report-page.css" rel="stylesheet">
+
 
 <?php 
     include_once(realpath(CONNECTION_PATH));
@@ -21,7 +18,8 @@ if(!isset($_SESSION['email'])) {
         $result = $conn->query($sql_find);
         if ($result->num_rows >0)
         {   while($row = $result->fetch_assoc())
-            {   $ReporterEmail = $row['ReporterEmail'];
+            {   $table = 'report_other';
+                $ReporterEmail = $row['ReporterEmail'];
                 $DropType = $row['DropType'];
                 $Detail = $row['Detail'];
                 $Status = $row['Status'];   
@@ -33,95 +31,88 @@ if(!isset($_SESSION['email'])) {
                 {$Rep_ID = $row['Rep_Mess_ID'];}
                 if(isset($row['Rep_Post_ID']))
                 {$Rep_ID = $row['Rep_Post_ID'];}
-            }
+
+            } 
+            echo "</div>
+            <br>Status is set to $Status<br>
+            <div class='line'>"; 
         }
     }
+
+    
 ?>
-            <br>Status is set to $Status<br>
-            <div class='line'>
-            <p>Status:</p>
-                <div class='type'>
-                    <select name = 'dropdown'>
-                    <option value = 'In Progress'>In Progress</option>
-                    <option value = 'Complete'>Complete</option>
-                    </select>
-                </div>
-            </div>";
-            include_once(realpath(CONNECTION_PATH));
-            if(isset($_POST['dropdown']))
-            { 
-                $dropdown = $_POST['dropdown'];
-                $sql_update = "UPDATE report_other SET Status= '$dropdown' WHERE RepOth_ID = '$RepOth_ID' ";
+<div class="report-form">
+    <form action = "Reports_edit.php" method = "post" rel = "stylesheet">
+    <div class="title">
+        <p>Report Edit&nbsp;</p>
+    </div>
+    <hr style="width: 75%">
 
-                if ($conn->query($sql_update) === TRUE)
-                {
-                    echo "<br>Your report has been recorded and sent to Admin";
-                    echo "<script>location.href = '/CPSC351-group1/pages/reports/Reports_Admin.php';</script>";
-                } 
-                else 
-                {
-                    echo "Error: " . $sql_insert . "<br>" . $conn->error;
-                }
+    <div class="typeSelect">
+        <div class="line">
+            <input type="radio" id="status_progress" name="status_new" value="In Progress">
+            <label for="status_progress">In Progress</label>
+        </div>
+        <div class="line">
+            <input type="radio" id="status_complete" name="status_new" value="Complete">
+            <label for="status_progress">Complete</label>
+        </div>
+    </div>
+    <div class = "line">
+        <div class="button"><input type="submit" name="submit" value="Submit Changes"></div>
+    </div>
+</div>
+<?php
+if (isset($_REQUEST['RepSys_ID']))
+{
+    $RepSys_ID = $_REQUEST['RepSys_ID'];
+    $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID' ";                              
+    $result = $conn->query($sql_find);
 
-            }
-            
-        }
-}
-?>
-
-
-
-<?php 
-    include_once(realpath(CONNECTION_PATH));
-    if ($_REQUEST['RepSys_ID'])
-    {
-        $RepSys_ID = $_REQUEST['RepSys_ID'];
-        $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID' ";                              
-        $result = $conn->query($sql_find);
     if ($result->num_rows >0)
     {   while($row = $result->fetch_assoc())
-        {   $ReporterEmail = $row['ReporterEmail'];
+        {   $table = 'report_system';
+            $ReporterEmail = $row['ReporterEmail'];
             $DropType = $row['DropType'];
             $Detail = $row['Detail'];
             $Status = $row['Status'];   
-        }  
-        echo "   
-    <br>Status is set to $Status<br>
-        <div class='line'>
-            <p>Status:</p>
-                <div class='type'>
-                    <select name = 'dropdown'>
-                    <option value = 'In Progress'>In Progress</option>
-                    <option value = 'Complete'>Complete</option>
-                    </select>
-                </div>
-        </div>
-        <div class=button><input type='submit' name='submit' value='Submit'></div>";
-       
-        include_once(realpath(CONNECTION_PATH));
-        if(isset($_POST['dropdown']))
-        { 
-            $dropdown = $_POST['dropdown'];
-            $sql_update = "UPDATE report_system SET Status= '$dropdown' WHERE RepSys_ID = '$RepSys_ID' ";
 
-            if ($conn->query($sql_update) === TRUE)
-            {
-                echo "<br>Your report has been recorded and sent to Admin";
-                echo "<script>location.href = '/CPSC351-group1/pages/reports/Reports_Admin.php';</script>";
-            } 
-            else 
-            {
-                echo "Error: " . $sql_insert . "<br>" . $conn->error;
-            }
+        } 
+        echo "</div>
+        <br>Status is set to $Status<br>
+        <div class='line'>" ;
+    }
+
 
         }
             
         }
 }
 
-?>   
+
+    if ($_SERVER["REQUEST_METHOD"]=="POST"){
+        $status_new = $_POST['status_new'];
+    }
+
+    echo "TRying to find $RepSys_ID";
+    $sql_update = "UPDATE $table SET Status= $status_new WHERE RepSys_ID = $RepSys_ID ";
+    $result = $conn->query($sql_update);
+        if ((!$result)){
+            echo"Done!";
+        }
+        else{
+        die ("The error is: " . mysqli_error($conn));
+        }
+    
+    // else
+    // {
+    //     echo"here";
+    // }
+}
 
 
+?>
+</form>
 <?php
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
