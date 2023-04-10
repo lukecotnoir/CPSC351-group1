@@ -93,17 +93,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $conn->close();
-} else {
-    // Display form
-    echo '<form method="POST">';
-    echo '<label for="date">Date:</label>';
-    echo '<input type="date" name="date" required>';
-    echo '<br>';
-    echo '<label for="event">Event:</label>';
-    echo '<input type="text" name="event" required>';
-    echo '<br>';
-    echo '<input type="submit" value="Sign Up">';
-    echo '</form>';
+} 
+else {
+  echo '<form method="POST">';
+  echo '<label for="date">Date:</label>';
+  echo '<input type="date" name="date" required>';
+  echo '<br>';
+  echo '<label for="event">Event:</label>';
+  echo '<input type="text" name="event" required>';
+  echo '<br>';
+  echo '<input type="submit" value="Sign Up">';
+  echo '</form>';
 }
 ?>
 </body>

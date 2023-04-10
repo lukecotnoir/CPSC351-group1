@@ -11,9 +11,9 @@ if(!isset($_SESSION['email'])) {
 
 <?php 
     include_once(realpath(CONNECTION_PATH));
-    if (isset($_REQUEST['RepOth_ID']))
+    if (isset($_GET['RepOth_ID']))
     {   
-        $RepOth_ID = $_REQUEST['RepOth_ID'];
+        $RepOth_ID = $_GET['RepOth_ID'];
         $sql_find =  "SELECT * FROM report_other WHERE RepOth_ID = '$RepOth_ID' ";                              
         $result = $conn->query($sql_find);
         if ($result->num_rows >0)
@@ -50,7 +50,7 @@ if(!isset($_SESSION['email'])) {
 
     <div class="typeSelect">
         <div class="line">
-            <input type="radio" id="status_progress" name="status_new" value="In Progress">
+            <input type="radio" id="status_progress" name="status_new" value="In Progress" checked=checked>
             <label for="status_progress">In Progress</label>
         </div>
         <div class="line">
@@ -63,15 +63,15 @@ if(!isset($_SESSION['email'])) {
     </div>
 </div>
 <?php
-if (isset($_REQUEST['RepSys_ID']))
+if (isset($_GET['RepSys_ID']))
 {
-    $RepSys_ID = $_REQUEST['RepSys_ID'];
+    $RepSys_ID = $_GET['RepSys_ID'];
     $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID' ";                              
     $result = $conn->query($sql_find);
 
     if ($result->num_rows >0)
     {   while($row = $result->fetch_assoc())
-        {   $table = 'report_system';
+        {   $table = 'Report_System';
             $ReporterEmail = $row['ReporterEmail'];
             $DropType = $row['DropType'];
             $Detail = $row['Detail'];
@@ -82,28 +82,21 @@ if (isset($_REQUEST['RepSys_ID']))
         <br>Status is set to $Status<br>
         <div class='line'>" ;
     }
-
-
-        }
-            
-        }
-}
-
+    
+    echo "Trying to find $RepSys_ID";
 
     if ($_SERVER["REQUEST_METHOD"]=="POST"){
         $status_new = $_POST['status_new'];
-    }
-
-    echo "TRying to find $RepSys_ID";
-    $sql_update = "UPDATE $table SET Status= $status_new WHERE RepSys_ID = $RepSys_ID ";
-    $result = $conn->query($sql_update);
-        if ((!$result)){
-            echo"Done!";
+        echo $status_new;
+        $sql_update = "UPDATE ".$table." SET Status = '".$status_new."' WHERE RepSys_ID = ".$RepSys_ID."";
+        $result = $conn->query($sql_update);
+        if ($result){
+            echo "Done!";
         }
         else{
-        die ("The error is: " . mysqli_error($conn));
+            die ("The error is: " . mysqli_error($conn));
         }
-    
+    }
     // else
     // {
     //     echo"here";

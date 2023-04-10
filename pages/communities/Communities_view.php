@@ -64,7 +64,7 @@
                     Created ".$row['YearCreated']."
                 </div>
                 <div class='item'>
-                    <a href=view_comm.php?id=".$row['CommID'].">View</a>
+                    <a href=comm_info.php?id=".$row['CommID'].">Info</a>
                 </div>
                 <div class='item'>
                     <a href=join.php?id=".$row['CommID']." style='color: #2c692c;' onclick='return myFunction2();'>Join</a>
