@@ -31,3 +31,6 @@ body {
     justify-content: space-evenly;
     width: 70%;
 }
+.account_info .line a {
+    color: var(--text-primary);
+}

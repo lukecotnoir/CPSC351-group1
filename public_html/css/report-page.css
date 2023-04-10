@@ -1,6 +1,9 @@
 body {
     background-color: var(--bg-dark);
 }
+table tr td a {
+    color: var(--text-primary);
+}
 .report-form form {
     display: flex;
     flex-direction: column;

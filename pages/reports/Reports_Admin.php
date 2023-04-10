@@ -30,7 +30,7 @@
         <div class="line">Status
             <div class="select">
                 <div class="searchtype">
-                    <input type="radio" id="finished" name="report_status" value="Completed">
+                    <input type="radio" id="finished" name="report_status" value="Complete">
                     <label for="finished">Completed</label>
                 </div>
                 <div class="searchtype">
@@ -42,9 +42,6 @@
         <div class="button">
             <input type="submit" name="submit">
         </div>
-        
-    </form>
-</div>
 
 <?php
 include_once(realpath(CONNECTION_PATH));
@@ -52,10 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $type = $_POST['report_type'];
     $status = $_POST['report_status'];
     if ($type =="System" )
-    {   $sql_find =  "SELECT * FROM report_system WHERE Status LIKE '$status'";                                                
+    {   $sql_find =  "SELECT * FROM report_system WHERE Status = '".$status."'";                                                
         $result = $conn->query($sql_find);
         if ($result->num_rows >0)
         {
+            echo "</form></div>";
             echo "<div class='results_table'>
             <div class='title'><p style='text-decoration: underline;'>Reports in Table:$type with Status: $status</p></div>
             <table border='1'>
@@ -83,8 +81,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_find =  "SELECT * FROM report_other WHERE Status LIKE '$status' ";
                                                 
         $result = $conn->query($sql_find);
-        if ($result->num_rows >0)
-        {   echo "<br>Here are the $type Reports with Status:$status<br>";
+        if ($result->num_rows >0){  
+            echo "</form></div>"; 
+            echo "<br>Here are the $type Reports with Status:$status<br>";
             echo "<div class='results_table'>
             <div class='title'><p style='text-decoration: underline;'>Reports in $type with Status: $status</p></div>
             <table border='1'><tr>
@@ -105,16 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         else {
             echo "<br>There are no results for your search ";
+            echo "</form></div>";
         }
     }
 }
-/*For Changing a report
-Not sure how to remove a post but changing status to complete
-After selecting the report they want to change, store the Rep_ID to a local? variable and use it
-in the where statement. 
-$sql_status_change = "UPDATE report_system SET Status = 'Complete' WHERE RepSys_ID = $working_Rep_ID";
-
-*/
+else {
+    echo "</form></div>";
+}
+?>
+<?php
 include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 
 ?>
