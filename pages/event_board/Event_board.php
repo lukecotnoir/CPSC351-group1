@@ -100,10 +100,23 @@ else {
   echo '<input type="date" name="date" required>';
   echo '<br>';
   echo '<label for="event">Event:</label>';
-  echo '<input type="text" name="event" required>';
-  echo '<br>';
-  echo '<input type="submit" value="Sign Up">';
-  echo '</form>';
+  echo '<select name="event" required>';
+// Connect to MySQL database
+include_once(realpath(CONNECTION_PATH));
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+// Retrieve events from the database
+$sql = "SELECT EventLocation FROM Events ORDER BY EventLocation ASC";
+$result = $conn->query($sql);
+while ($row = $result->fetch_assoc()) {
+  echo '<option value="'.$row['EventLocation'].'">'.$row['EventLocation'].'</option>';
+}
+echo '</select>';
+echo '<br>';
+echo '<input type="submit" value="Sign Up">';
+echo '</form>';
+  
 }
 ?>
 </body>
