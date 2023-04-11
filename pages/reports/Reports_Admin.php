@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $type = $_POST['report_type'];
     $status = $_POST['report_status'];
     if ($type =="System" )
-    {   $sql_find =  "SELECT * FROM report_system WHERE Status = '".$status."'";                                                
+    {   $sql_find =  "SELECT * FROM report_system WHERE Status = '$status'";                                                
         $result = $conn->query($sql_find);
         if ($result->num_rows >0)
         {

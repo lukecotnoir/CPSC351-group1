@@ -45,7 +45,7 @@ include_once(realpath(CONNECTION_PATH));
 if(isset($_POST['dropdown'],$_SESSION['email']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporter_ID = $_SESSION['email'];
+    $reporter_ID = $_SESSION['ID'];
 
 
     if(isset($_POST["otherdetail"]))
@@ -77,18 +77,18 @@ if(isset($_POST['dropdown'],$_SESSION['email']))
     
     if($reporttype=="Account")
     {
-        $sql_insert = "INSERT INTO Report_Other(DropType, Detail, ReporterEmail, Rep_Acc_ID, Reason, Status) 
-        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID' , '$reason', 'In Progress')";
+        $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Acc_ID, Reason, Status) 
+        VALUES ('".$reporttype."', '".$details."', '".$reporter_ID."','".$rep_ID."' , '".$reason."', 'In Progress')";
     }
     if($reporttype=="Post")
     {
-        $sql_insert = "INSERT INTO Report_Other(DropType, Detail, ReporterEmail, Rep_Post_ID, Reason, Status) 
-        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason', 'In Progress')";
+        $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Post_ID, Reason, Status) 
+        VALUES ('".$reporttype."', '".$details."', '".$reporter_ID."','".$rep_ID."', '".$reason."', 'In Progress')";
     }
     if($reporttype=="Community")
     {
-        $sql_insert = "INSERT INTO Report_Other(DropType, Detail, ReporterEmail, Rep_Comm_ID, Reason, Status) 
-        VALUES ('$reporttype', '$details', '$reporter_ID','$rep_ID', '$reason', 'In Progress')";
+        $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Comm_ID, Reason, Status) 
+        VALUES ('".$reporttype."', '".$details."', '".$reporter_ID."','".$rep_ID."', '".$reason."', 'In Progress')";
     }
     /*if($reporttype=="Message")
     {

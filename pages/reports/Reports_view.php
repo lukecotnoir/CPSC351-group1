@@ -16,7 +16,7 @@ if(!isset($_SESSION['email'])) {
     include_once(realpath(CONNECTION_PATH));
     if (isset($_REQUEST['RepOth_ID']))
     {
-        $RepOth_ID1 = $_REQUEST['RepOth_ID'];
+        $RepOth_ID1 = $_GET['RepOth_ID'];
         $sql_find =  "SELECT * FROM report_other WHERE RepOth_ID = '$RepOth_ID1' ";                              
         $result = $conn->query($sql_find);
         if ($result->num_rows >0)
@@ -71,9 +71,9 @@ if(!isset($_SESSION['email'])) {
   
   <?php 
     include_once(realpath(CONNECTION_PATH));
-    if ($_REQUEST['RepSys_ID'])
+    if ($_GET['RepSys_ID'])
     {
-        $RepSys_ID1 = $_REQUEST['RepSys_ID'];
+        $RepSys_ID1 = $_GET['RepSys_ID'];
         $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID1' ";                              
         $result = $conn->query($sql_find);
     
