@@ -9,8 +9,9 @@
 <body>
 <div class='report-form'>
     <form action="Reports_system.php" method="post">
-        <div class="title"><p>Report A Problem</p></div>
+        <div class="title"><p>Report A System Problem</p></div>
         <hr style="width: 75%;">
+        
         <div class="type">
             Where is the issue?:
             <select name = "dropdown">
