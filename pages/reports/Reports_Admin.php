@@ -83,7 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql_find);
         if ($result->num_rows >0){  
             echo "</form></div>"; 
-            echo "<br>Here are the $type Reports with Status:$status<br>";
             echo "<div class='results_table'>
             <div class='title'><p style='text-decoration: underline;'>Reports in $type with Status: $status</p></div>
             <table border='1'><tr>

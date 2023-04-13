@@ -14,7 +14,7 @@ if(!isset($_SESSION['email'])) {
 
     <?php 
     include_once(realpath(CONNECTION_PATH));
-    if (isset($_REQUEST['RepOth_ID']))
+    if (isset($_GET['RepOth_ID']))
     {
         $RepOth_ID1 = $_GET['RepOth_ID'];
         $sql_find =  "SELECT * FROM report_other WHERE RepOth_ID = '$RepOth_ID1' ";                              
@@ -63,7 +63,7 @@ if(!isset($_SESSION['email'])) {
                     <div class=line><p>Status:</p></div>
                     <div class=line><p>".$Status."</p></div>
             </div>
-            <div class=line><a href=\"Reports_edit.php?RepOth_ID={$RepOth_ID1}\">Edit Report</a></div>
+            <div class=line><a href=\"Reports_edit_Other.php?RepOth_ID={$RepOth_ID1}\">Edit Report</a></div>
             ";
         }
     }
@@ -71,7 +71,7 @@ if(!isset($_SESSION['email'])) {
   
   <?php 
     include_once(realpath(CONNECTION_PATH));
-    if ($_GET['RepSys_ID'])
+    if (isset($_GET['RepSys_ID']))
     {
         $RepSys_ID1 = $_GET['RepSys_ID'];
         $sql_find =  "SELECT * FROM report_system WHERE RepSys_ID = '$RepSys_ID1' ";                              
@@ -109,9 +109,7 @@ if(!isset($_SESSION['email'])) {
                 <div class=line><p>Status:</p></div>
                 <div class=line><p>".$Status."</p></div>
         </div>
-
         <div class=line><a href=\"Reports_edit.php?RepSys_ID={$RepSys_ID1}\">Edit Report</a></div>
-
     ";
     }
     
