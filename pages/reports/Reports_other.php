@@ -45,50 +45,47 @@ include_once(realpath(CONNECTION_PATH));
 if(isset($_POST['dropdown'],$_SESSION['email']))
 {
     $reporttype = $_POST['dropdown'];
-    $reporter_ID = $_SESSION['ID'];
+    $reporteremail = $_SESSION['email'];
 
 
     if(isset($_POST["otherdetail"]))
-    {
-        $details = $_POST["otherdetail"];
-    }
+    {$details = $_POST["otherdetail"];}
     else
-    {
-        $details = "none";
-    }
+    {$details = "none";}
 
     if(isset($_POST["reason"]))
-    {
-        $reason = $_POST["reason"];
-    }
+    {$reason = $_POST["reason"];}
     else
-    {
-        $reason = "none";
-    }
+    {$reason = "none";}
 
-    if(isset($_POST["rep_ID"]))
-    {
-        $rep_ID = $_POST["rep_ID"];
-    }
-    else
-    {
-        $rep_ID = "none";
-    }
+    
     
     if($reporttype=="Account")
     {
-        $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Acc_ID, Reason, Status) 
-        VALUES ('".$reporttype."', '".$details."', '".$reporter_ID."','".$rep_ID."' , '".$reason."', 'In Progress')";
+        if(isset($_POST["rep_ID"]))
+            {$rep_ID = $_POST["rep_ID"];}
+            else
+            {$rep_ID = "none";}
+        $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Acc_Email, Reason, Status) 
+        VALUES ('$reporttype', '$details', '$reporteremail','$rep_ID' , '$reason', 'In Progress')";
     }
     if($reporttype=="Post")
     {
+        if(isset($_POST["rep_ID"]))
+            {$rep_ID = $_POST["rep_ID"];}
+            else
+            {$rep_ID = 0;}
         $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Post_ID, Reason, Status) 
-        VALUES ('".$reporttype."', '".$details."', '".$reporter_ID."','".$rep_ID."', '".$reason."', 'In Progress')";
+        VALUES ('$reporttype', '$details', '$reporteremail','$rep_ID' , '$reason', 'In Progress')";
     }
     if($reporttype=="Community")
-    {
+    {   
+        if(isset($_POST["rep_ID"]))
+            {$rep_ID = $_POST["rep_ID"];}
+            else
+            {$rep_ID = 0;}
         $sql_insert = "INSERT INTO Report_Other (DropType, Detail, ReporterEmail, Rep_Comm_ID, Reason, Status) 
-        VALUES ('".$reporttype."', '".$details."', '".$reporter_ID."','".$rep_ID."', '".$reason."', 'In Progress')";
+        VALUES ('$reporttype', '$details', '$reporteremail','$rep_ID' , '$reason', 'In Progress')";
     }
     /*if($reporttype=="Message")
     {
