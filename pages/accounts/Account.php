@@ -66,6 +66,12 @@ if(!isset($_SESSION['email'])) {
     location.href = "/CPSC351-group1/pages/accounts/Edit_account.php";
     };
     </script>
+    <div class=button style="padding: 5px"><input id="view_report_button" type="button" value="View My Reports"></div>
+    <script type="text/javascript">
+    document.getElementById("view_report_button").onclick = function () {
+    location.href = "/CPSC351-group1/pages/reports/Reports_userview.php";
+    };
+    </script>
     <a href="/CPSC351-group1/pages/accounts/Logout.php" style="color: #b0453e;">Logout</a>
 </div>
 
