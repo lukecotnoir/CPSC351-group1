@@ -1,76 +1,76 @@
 <?php
     include_once(realpath("../../resources/config.php"));
     include_once(realpath(TEMPLATES_PATH . "/header.php"));
+    if(!isset($_SESSION['email'])) {
+      header("location:/CPSC351-group1/index.php");
+  }
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Event Sign Up Form</title>
-    <style>
-      p {
-        color: var(--text-primary);
-      }
-      body {
-        font-family: var(--global-font);
-        background-color: var(--bg-dark);
-      }
-      h1 {
-        color: var(--text-primary);
-        text-align: center;
-        margin-top: 50px;
-      }
-      form {
-        max-width: 500px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
-      input[type=text], select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-      }
-      input[type=submit] {
-        background-color: var(--bg-blue-secondary);
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      input[type=submit]:hover {
-        background-color: #FFD700;
-      }
-      .error {
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-	<h1>Event Sign-Up Form</h1>
+<link href="../../public_html/css/event-board.css" rel="stylesheet">
+<div class='container'>
+  <div class='event-select'>
+    <h2>Select a month to view events</h2>
+    <form action="Event_board.php" method="POST">
+      <select name='month' id='month'>
+        <option value='01'>January</option>
+        <option value='02'>February</option>
+        <option value='03'>March</option>
+        <option value='04'>April</option>
+        <option value='05'>May</option>
+        <option value='06'>June</option>
+        <option value='07'>July</option>
+        <option value='08'>August</option>
+        <option value='09'>September</option>
+        <option value='10'>October</option>
+        <option value='11'>November</option>
+        <option value='12'>December</option>
+      </select>
+      <input type="submit" name = "submit" value="Select">
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($_POST["submit"] == 'Select') {
+    include_once(realpath(CONNECTION_PATH));
+    $month = $_POST['month'];
+    $event_select = "SELECT * FROM Events WHERE MONTH(EventDate) = ".(int) $month."";
+    $results = $conn->query($event_select);
+    if ($results->num_rows > 0) {
+      echo "<div class='results_table'>";
+      echo "<table border='1'>
+      <tr><th>Event Name</th><th>Date</th></tr>";
+      while($row = $results->fetch_assoc()) {
+        echo "<tr><td>";
+        echo $row['EventLocation'];
+        echo "</td><td>";
+        echo $row['EventDate'];
+        echo "</td></tr>";
+      }
+      echo "</table></div>";
+    }
+    else {
+      echo "<p style='color: black'>It looks like there are no events in that month!</p>";
+    }
+  }
+}
+?>
+  </form>
+  </div>
+  <div class='sign-up-form'>
+    <h2>Event Sign-Up Form</h2>
+    <form action="Event_board.php" method="POST">
+      <label for="date">Date:</label>
+      <input type="date" name="date" required>
+      <label for="event">Event:</label>
+      <input type="text" name="event">
+      <br>
+      <input type="submit" name="submit" value="Sign Up">
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if($_POST['submit'] == 'Sign Up'){
     // Handle form submission
     $email = $_SESSION['email'];
     $date = $_POST['date'];
     $event = $_POST['event'];
     // Connect to MySQL database
-
     include_once(realpath(CONNECTION_PATH));
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     // Insert form data into MySQL database
     $sql1 = "SELECT idEvents FROM Events WHERE EventDate = '".$date ."' AND EventLocation = '".$event."'";
@@ -81,46 +81,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
       $row = $result->fetch_assoc();
       $eventid = $row['idEvents'];
-      $sql2 = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) SELECT * FROM Accounts_Attending WHERE NOT EXISTS 
-              (SELECT * FROM Accounts_Attending WHERE Events_idEvents = ".$eventid." AND Accounts_CNUID = ".$_SESSION['ID'].")";
+      $sql2 = "SELECT * FROM Accounts_Attending WHERE Events_idEvents = ".$eventid." AND Accounts_CNUID = ".$_SESSION['ID']."";
       $ver = mysqli_query($conn, $sql2);
-      if (!$ver) {
+      if ($ver->num_rows > 0) {
         echo"<p>It looks like you've already signed up for $event on $date.</p>";
-      } 
+      }
       else {
-        echo "<p>Thank you for signing up for $event on $date!</p>";
+        $insert_sql = "INSERT INTO Accounts_Attending (Events_idEvents, Accounts_CNUID) VALUES (".$eventid.", ".$_SESSION['ID'].")";
+        $verify = mysqli_query($conn, $insert_sql);
+        if ($verify) echo "<p>Thanks for signing up!</p>";
+        else echo "<p>Error</p>";
       }
     }
 
-    $conn->close();
-} 
-else {
-  echo '<form method="POST">';
-  echo '<label for="date">Date:</label>';
-  echo '<input type="date" name="date" required>';
-  echo '<br>';
-  echo '<label for="event">Event:</label>';
-  echo '<select name="event" required>';
-// Connect to MySQL database
-include_once(realpath(CONNECTION_PATH));
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-// Retrieve events from the database
-$sql = "SELECT EventLocation FROM Events ORDER BY EventLocation ASC";
-$result = $conn->query($sql);
-while ($row = $result->fetch_assoc()) {
-  echo '<option value="'.$row['EventLocation'].'">'.$row['EventLocation'].'</option>';
-}
-echo '</select>';
-echo '<br>';
-echo '<input type="submit" value="Sign Up">';
-echo '</form>';
-  
+  } 
 }
 ?>
+  </form>
+  </div>
+</div>
 </body>
 <?php
     include_once(realpath(TEMPLATES_PATH . "/footer.php"));
 ?>
-</html>

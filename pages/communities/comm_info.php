@@ -40,17 +40,19 @@
             AND Community.CommID = Accounts_in_Comm.Community_idCommunity 
             AND Accounts_in_Comm.Accounts_CNUID = Accounts.UserID";
     $result = mysqli_query($conn, $sql);
-    echo "
-    <div class='line'><p>Members</p></div>
-    <hr style='width: 75%'>
-    ";
-    while($row = $result->fetch_assoc()) {
+    if ($result->num_rows > 0) {
         echo "
-        <div class='two-items'>
-            <div class='line'><p>".$row['FirstName']." ".$row['LastName']."</p></div>
-            <div class='line'><p>".$row['Email']."</p></div>
-        </div>
+        <div class='line'><p>Members</p></div>
+        <hr style='width: 75%'>
         ";
+        while($row = $result->fetch_assoc()) {
+            echo "
+            <div class='two-items'>
+                <div class='line'><p>".$row['FirstName']." ".$row['LastName']."</p></div>
+                <div class='line'><p>".$row['Email']."</p></div>
+            </div>
+            ";
+        }
     }
 ?>
 <?php
