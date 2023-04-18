@@ -41,22 +41,12 @@ include_once(realpath(CONNECTION_PATH));
 include_once(realpath(TEMPLATES_PATH . "/header.php"));    
 
 
-if(isset($_POST['dropdown'],$_SESSION['email']))
-{
-    $reporttype = $_POST['dropdown'];
-    $reporteremail = $_SESSION['email'];
-    
-    if(isset($_POST["reportdescribe"]))
-    {$details = $_POST["reportdescribe"];}
-    else
-    {$details = "none";}
-
-    
-
-    $sql_insert = "INSERT INTO report_system(ReporterEmail, DropType, Detail, Status) 
-                    VALUES ('$reporteremail','$reporttype', '$details', 'In Progress')";
-
-    if ($conn->query($sql_insert) === TRUE)
+if(isset($_POST['dropdown'], $_SESSION['email']))
+{   
+    $sql_insert = "INSERT INTO Report_System(ReporterEmail, DropType, Detail, Status) 
+                    VALUES ('".$_SESSION['email']."','".$_POST['dropdown']."', '".$_POST["reportdescribe"]."', 'In Progress')";
+    $ver = mysqli_query($conn, $sql_insert);
+    if ($ver)
     {
     echo "<br>Your report has been recorded and sent to Admin";
     } 
