@@ -27,12 +27,13 @@ if(!isset($_SESSION['email'])) {
                 $Status = $row['Status'];   
                 if(isset($row['Rep_Acc_ID']))
                 {$Rep_ID = $row['Rep_Acc_ID'];}
-                if(isset($row['Rep_Comm_ID']))
+                else if(isset($row['Rep_Comm_ID']))
                 {$Rep_ID = $row['Rep_Comm_ID'];}
-                if(isset($row['Rep_Mess_ID']))
+                else if(isset($row['Rep_Mess_ID']))
                 {$Rep_ID = $row['Rep_Mess_ID'];}
-                if(isset($row['Rep_Post_ID']))
+                else if(isset($row['Rep_Post_ID']))
                 {$Rep_ID = $row['Rep_Post_ID'];}
+                else {$Rep_ID = "";}
             }  
             echo "  
             <div class = two-items>
